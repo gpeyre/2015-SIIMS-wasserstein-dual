@@ -1,6 +1,6 @@
 This toolbox reproduces the numerical results of the paper:
 
-A Smoothed Dual Approach for Variational Wasserstein Problems},
+A Smoothed Dual Approach for Variational Wasserstein Problems,
 Marco Cuturi and Gabriel Peyré
 Preprint arXiv:1503.02533
 2015
