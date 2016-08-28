@@ -4,8 +4,8 @@ M. Cuturi, G. Peyré. [A Smoothed Dual Approach for Variational Wasserstein Prob
 
 ![Example of l1 regularization path](img/tv-prox.png)
 
-----------
 Content
+----------
 
 These code reproduces the experiments on the TV regularization:
 * test_shapes.m: barycenters of images with regularization.
@@ -18,5 +18,5 @@ These codes are
 * compute_dual_wasserstein.m: compute the gradient of the dual Wasserstein distance.
 
 
-----------
 Copyright (c) 2015 Gabriel Peyré
+----------
