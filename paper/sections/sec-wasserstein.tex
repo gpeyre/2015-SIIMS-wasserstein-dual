@@ -1,0 +1,155 @@
+% !TEX root = ../WassersteinDual.tex
+
+\section{Legendre Transforms of the Smoothed Wasserstein Distance}\label{sec:optimtransentrop}
+
+We introduce in this section the entropic regularization of the Wasserstein distance, study its Legendre transform and show that it admits a simple closed form.
+
+%%
+\subsection{Optimal Transport with Entropic Smoothing}
+
+We consider two discrete probability distributions on the same space, represented through their histograms $\p,\q\in \Si_n$ of $\n$ values, where
+\eq{ 
+	\Si_n \defeq \enscond{p \in \RR_+^N}{\sum_i p_i=1}.
+}
+We also introduce a symmetric cost matrix $M = (M_{ij})_{i,j=1,\ldots,n} \in \RR_+^{\n \times \n}$. Each element $M_{ij}$ accounts for the (ground) cost of moving mass from bin $i$ to bin $j$. In many applications of optimal transport, the cost matrix $M$ is defined through $n$ points $(x_i)_i$ taken in a metric space $(\Xcal,D)$ such that $M_{ij} = D(x_i,x_j)^\rho, \rho\geq 1$. Note however that we make no assumption on $M$ in this paper other than the fact that it is symmetric and non-negative. 
+
+Given $\p,\q$, the set of couplings $U(\p,\q)$ and the discrete entropy of any coupling in that set are defined as,
+\begin{equation}
+	U(\p,\q) \defeq \enscond{X \in \RR_+^{\n \times \n}}{ X \ones_\n = \p, X^T \ones_\n = \q },
+	\quad
+	E(X) \defeq - \sum_{ij} h(X_{ij}),
+\end{equation}
+where $\forall x>0, h(x) \defeq x\log x, h(0)=0$.`
+%
+We follow~\cite{cuturi2013sinkhorn}'s approach and introduce a entropy-regularized optimal transport problem:
+\eql{\label{eq-entropic-wass-dist}
+	W_\ga(\p,\q) \defeq \umin{X \in U(\p,\q)} \dotp{M}{X} - \ga E(X),
+}
+where $\ga\geq 0$, and where the inner product is defined as
+\eq{
+	\dotp{M}{X} \defeq \sum_{i,j} M_{ij} X_{ij}.
+}
+For $\ga=0$, one recovers the usual optimal transport problem, which is a linear program. $W_0$ is known as the Wasserstein distance (or Earth Mover's Distance, EMD) between $\p$ and $\q$. For $\ga>0$, Problem~\eqref{eq-entropic-wass-dist} is strictly convex and admits a unique optimal coupling $X_\ga^\star$. \cite{cuturi2013sinkhorn} called the resulting cost $\dotp{M}{X_\ga^\star}$ the \emph{Sinkhorn divergence} between $\p$ and $\q$. 
+%
+Using this entropy-regularized Wasserstein distance $W_\ga$ instead of $W_0$ in variational problems (such as for the computation of barycenters, see Section~\ref{sec:regularized}) leads to smoother solutions, as we show in the numerical result (see in particular Fig.~\ref{fig:smoothvsnonsmooth}).
+
+
+While $X_\ga^\star$ is not necessarily unique for $\ga=0$, we show in the following proposition that in the small $\ga$ limit, the regularization captures the maximally entropic coupling. %(the one whose mass is maximally spread out in some sense). %When there is no risk of confusion, we note $W$ instead of $W_\ga$.
+ 
+ \begin{proposition}
+ 	One has $W_\ga \rightarrow W_0$ as $\ga \rightarrow 0$, and denoting $X_\ga^\star$ the unique solution of~\eqref{eq-entropic-wass-dist}, one has
+ 	\eql{\label{eq-limit-problem}
+ 		X^\star_\ga \longrightarrow 
+ 		X_0^\star = \uargmax{X \in U(\p,\q)} \enscond{ E(X) }{ \dotp{M}{X} = W_0(\p,\q) }.
+ 	} 
+ \end{proposition}
+ \begin{proof}
+ 	We consider a sequence $(\ga_\ell)_\ell$ such that $\ga_\ell \rightarrow 0$ and $\ga_\ell > 0$.	
+ 	We denote $X_\ell = X^\star_{\ga_\ell}$. Since $U(\p,\q)$ is bounded, we can extract a sequence (that we do not relabel for sake of simplicity) such that $X_\ell \rightarrow X^\star$. Since $U(\p,\q)$ is closed, $X^\star \in U(\p,\q)$. We consider any $X$ such that $\dotp{M}{X} = W_0(\p,\q)$. By optimality of $X$ and $X_\ell$ for their respective optimization problems (for $\ga=0$ and $\ga=\ga_\ell$), one has
+ 	\eql{\label{eq-proof-gamma-conv}
+ 		0 \leq \dotp{M}{X_\ell} - \dotp{M}{X} \leq \ga_\ell ( E(X_\ell)-E(X) ).
+ 	}
+ 	Since $E$ is continuous, taking the limit $\ell \rightarrow +\infty$ in this expression shows that 
+ 	$\dotp{M}{X^\star} = \dotp{M}{X}$ so that $X^\star$ is a feasible point of~\eqref{eq-limit-problem}. Furthermore, dividing by $\ga_\ell$ in~\eqref{eq-proof-gamma-conv} and taking the limit shows that 
+ 	$E(X) \leq E(X^\star)$, which shows that $X^\star$ is a solution of the maximization~\eqref{eq-limit-problem}. Since the solution $X_0^\star$ to this program is unique by strict convexity of $-E$, one has $X^\star = X_0^\star$, and the whole sequence is converging. 
+ \end{proof}
+
+
+\cite{cuturi2014fast} provided a dual expression for $W_\ga$. The proof of that result follows from an application of Fenchel-Rockafellar duality to the primal problem~\eqref{eq-entropic-wass-dist}. The indicator function of a closed convex set $\Cc$ is $\iota_\Cc(x)=0$ for $x \in \Cc$ and $\iota_\Cc(x)=+\infty$ otherwise.
+
+\begin{proposition}
+	One has 
+	\eql{\label{eq-wassdist-dual}
+		W_{\gamma}(\p,\q) = \umax{u,v\in\RR^n}  \dotp{u}{p} + \dotp{v}{q} - B( u,v ),
+	}
+	\eq{B( u,v ) \defeq
+		\begin{cases} 
+			\gamma \sum_{i,j} \exp(\frac{1}{\gamma}(u_i + v_j - M_{ij})-1),\text{ if } \gamma>0;\\	 				\iota_{\Cc_M}(u,v), \text{ if } \gamma=0, \quad\text{where}\quad \Cc_M \defeq 
+				\enscond{(u,v)}{ u_i + v_j \leq M_{ij}}.
+		\end{cases}
+	}
+\end{proposition}
+
+When $\ga>0$, this regularization results in a smoothed approximation of the Wasserstein distance with respect to either of its arguments, as shown below. To simplify notations, let us introduce the notation $H_\q(\p)$, the Wasserstein distance of any point $\p$ to a fixed histogram $\q\in\Sigma_n$,
+\eq{
+	\foralls p \in \Si_n, \quad H_q(p) \defeq  W_\ga(\p,\q).
+} 
+Note that $H_q$ is a convex function for all $\ga\geq 0$. When $\ga>0$, $H_q$ has the following properties, which follow from the direct differentiation of expression~\eqref{eq-wassdist-dual}:
+\begin{proposition}\label{prop-primal-properties} For $\ga>0$ and $(\p,\q) \in \Si_n \times \Si_n$ with $p>0, q>0$, 
+	 $H_q$ is $C^1$ at $p$ and $\nabla H_q(p) = u^\star$ where $u^\star$ is the unique solution of~\eqref{eq-wassdist-dual} satisfying $\dotp{u^\star}{\ones_n}=0$.
+\end{proposition}
+
+Computing both $H_q$ and its gradient requires thus the resolution of the optimization problem in Eq.~\eqref{eq-wassdist-dual}, which can be solved with a Sinkhorn fixed-point iteration~\cite{cuturi2013sinkhorn} as remarked by \cite[\S5]{cuturi2014fast}. This computation can be avoided when studying the Fenchel-Legendre conjugate of $H_q$, as shown below.
+
+%%
+\subsection{Legendre Transform with Respect to One Histogram}
+
+The goal of this section is to show that the Fenchel-Legendre transform of $H_q$,
+\eq{
+	\foralls g \in \RR^n, \quad
+	H_q^*(g) = \umax{p \in \Si_n} \dotp{g}{p} - H_q(p),
+}
+has a closed form. This result was already known when $\ga=0$, that is for the original Wasserstein distance. \cite[Prop. 4.1]{Carlier-NumericsBarycenters} showed indeed that computing $H_q^*$ only requires a sequence of nearest-neighbor assignments. We show that for $\ga>0$, these nearest-neighbor assignments are replaced by soft assignments.
+
+% The main result of this paper is to show that the Legendre transform of the \emph{smoothed} Wasserstein distance ($\ga>0$) has a closed form. 
+Compared to the primal smoothed Wasserstein distance $H_q$, the computation of both $H_q^*$ and its derivatives can be carried out without having to solve a matrix-scaling problem. These properties are at the core of the computational framework we develop in this paper.
+
+\begin{theorem}[Legendre Transform of $H_q$]\label{thm-legendre-transf}
+	For $\ga>0$, the Fenchel-Legendre dual function $H_q^*$ is $C^\infty$. Its gradient function $\nabla H_q^*(\cdot)$ is $1/\gamma$ Lipschitz. Its value, gradient and Hessian at $g\in\RR^n$ are, writing $\al=e^{g/\ga}$ and $K=e^{-M/\ga}$,
+	\begin{equation}\label{eq-obj-dual}\begin{aligned}
+		H_q^*(g) &= \ga \left( E(q)+\dotp{q}{\log K\alpha}\right),\, \nabla H_q^*(g) = \al \circ \pa{\K  \frac{q}{\K  \al} } \in \Sigma_n,\\
+		\nabla^2 H_q^*(g)  &= \frac{1}{\ga}\diag\left(\al \circ K \frac{q}{\K \al}\right) - \frac{1}{\ga}\diag(\al) K \diag\left(\frac{q}{(\K  \al)^2 }\right)\K  \diag(\al).\end{aligned}
+\end{equation}
+%	where $\circ$ and $/$ denote respectively element-wise multiplication and division, and $e^{A} = (e^{A_{ij}})_{ij}$.
+
+\end{theorem}
+
+\begin{proof}
+%	The fact that $H_{q}$ is $\ga$ strongly convex is proved in~\cite{CuturiSinkhorn} \todo{not really}, and this implies the smoothness of $H_q^*$, see for instance~\cite{}. 
+	For this proof, we Write $H_{q,M}(p)$ in place of $H_{q}(p)$ to make explicit the dependency on $M$. One has
+	\begin{align*}
+		H_{q,M}^*(g) &= \umax{p\in\Si_{\n}} \dotp{g}{p} - \umax{u,v} \dotp{u}{p} + \dotp{v}{q} - B( u,v ) \\
+	%	&= \umax{p} - \umax{u,v} \dotp{u-g}{p} + \dotp{v}{q} + B( u,v ) \\
+		&= \umax{p\in\Si_{\n}} - \umax{u',v} \dotp{u'}{p} + \dotp{v}{q} - B( u'+g,v) \\
+%		&= \umax{p\in\Si_{\n}} - \umax{u,v} \dotp{u}{p} + \dotp{v}{q} - \beta_{\ga,M-g\ones ^T}( u,v ) %\\&
+		&= \umax{p\in\Si_{\n}} - H_{q,M-g\ones^T}(p) = -\umin{p\in\Si_{\n}} \umin{X \in U(\p,\q) } \dotp{M-g\ones^T}{X} - \ga E(X).	
+	\end{align*}
+	This leads to an optimal transport problem which is only constrained by \emph{one} marginal,
+	\eql{\label{eq-grad-dual-proof-1}
+		H_{q,M}^*(g) = -\!\!\!\!\!\umin{X, X^T\ones  = q, X\geq 0} \dotp{M-g\ones^T}{X} - \ga E(X)\\				
+	}
+which can be explicitly solved by writing first order conditions for~\eqref{eq-grad-dual-proof-1} to obtain that, at the optimum, we necessarily have $\log(X_{ij}^\star)=\frac{1}{\gamma}(g_i-M_{ij}+\rho_j)-1$ for some vector of values $\rho\in\RR^n$. Therefore $X^\star$ has the form $X^\star=\diag(\alpha)K \diag(e^{\rho/\gamma-1})$, using the notation $\al=e^{g/\ga}$. Because of the marginal constraint that $X^{\star T}\ones =q$, the rightmost diagonal matrix must necessarily be equal to $\diag(q /\K \alpha)$, and thus 
+	$X^\star=\diag(\alpha)K \diag(q/\K \alpha).$
+Therefore, the Legendre transform $H_{q,M}^*$ has a closed form,
+	\begin{equation}\label{eq:originalexpression}H_{q,M}^*(g) = -\dotp{M-g\ones^T}{X^\star}+\gamma E(X^\star)\end{equation} 
+	which can be simplified to 
+	$$H_{q,M}^*(g) =	-\ga \ones_d^T \left((K\alpha) \circ h(q/K\alpha)\right).$$
+	by using the fact that $X^\star=\diag(\alpha)K \diag(q/\K \alpha)$. This equation can be simplified further to obtain the expression provided in Eq.~\eqref{eq-obj-dual}. Using Eq.~\eqref{eq:originalexpression}, we have that
+	\eq{
+		\nabla H_{q,M}^*(g) = X^\star \ones  = \al \circ \pa{K  \frac{q}{\K  \al} }.
+	}
+	Computations for the Hessian follow directly, and result in the expression given Eq.~\eqref{eq-obj-dual}. Since the Hessian can be written as the difference of two positive definite matrices, one diagonal and the other equal to the product of a matrix times its transpose, the trace of $\nabla^2 H_q^*(g)$ is upper bounded by the trace of the first term, which is equal to $\frac{1}{\gamma}$ (recall that $\nabla H_{q,M}^*(g)$ is in the simplex $\Si_n$), which proves the $\frac{1}{\gamma}$-Lipschitz continuity of the gradient of $H_q^*$.
+\end{proof}
+
+In some settings, such as the Wasserstein propagation framework of~\cite{Solomon-ICML}, the aim is to minimize Wasserstein distances with respect to two variable arguments. We provide the formulation for the corresponding Legendre transform in Theorem~\ref{eq-obj-bothvar} in the Appendix.
+
+%%%
+\subsection{Un-regularized Case}
+
+The result of Theorem~\ref{thm-legendre-transf} is derived in the un-regularized case (\ie\, $\ga=0$) in~\cite{Carlier-NumericsBarycenters}. For the sake of comparison, let us now recall this result using our notations. Given a cost matrix $M\in\RR^{n\times n}$ and a vector $g\in\RR^n$, we introduce for $i\leq n$ the set $N_{M,g}(i) = \argmin_k M_{ik}-g_i.$
+ In other words, $N_{M,g}(i)$ is the set of nearest-neighbors of $i$ with respect to the vector of distances $M_{ik}$ offset by $-g_i$. 
+ 
+A map $\sigma_{M,g}: \{1,\dots,n\}\rightarrow \Sigma_n$ is called a nearest-neighbor map if the vector $\sigma_{M,g}(i)$ only has non-zero values on indices in $N_{M,g}(i)$, namely 
+$$ 
+	[\sigma_{M,g}(i)]_j \ne 0 \quad\Longleftrightarrow\quad j\in N_{M,g}(i).
+$$
+If $N_{M,g}(i)$ is a singleton $\{j\}$ (the minimization $\min_k M_{ik}-g_i$ admits only one optimal solution) then $\sigma_{M,g}(i)$ is necessarily equal to a Dirac histogram $\delta_j$ (we call a Dirac histogram a histogram with mass $1$ on only one coordinate, of index $j$ in this case). When $N_{M,g}(i)$ has more than one element, ties have to be taken care off, and this can be carried out arbitrarily, for instance by dividing the mass equally among those nearest neighbors, or by only choosing arbitrarily one of them. We can now recall the result of \cite{Carlier-NumericsBarycenters}:
+ 
+\begin{proposition}[Carlier et al. 2014, Prop. 4.1]\label{prop:harddual} For $\ga=0$ and a nearest-neighbor map $\sigma_{M,g}$, the Fenchel-Legendre dual function $H^*_q$ admits the following vector in its sub-differential $\partial H_{\q}^*(g)$ at $g\in\RR^n$,		
+$$ 
+	S_q(g) \defeq \sum_{i\leq d}q_i\sigma_{M,g}(i) \in \partial H_{q}^*(g).
+$$ 
+Note that $S_q(g)$ is in $\Sigma_n$. The value of $H_{\q}^*(g)$ is $\dotp{S_q(g)}{g}$.
+\end{proposition}
+	
+	

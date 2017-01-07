@@ -1,0 +1,38 @@
+\subsection{Learning parts of smileys}
+
+We applied our method to a toy database of simley faces that we generated with a circle as the contour of the face and different kinds of eyes and mouths, shifted up to 8 pixels horizontally and vertically (Figure \ref{fig:smileyData}). The distance between two pixels is take to be the euclidean distance between their position. The results, shown in Figure \ref{fig:smileyLearned}, seem to indicate that the wasserstein cost is more able to isolate individual parts than the Kullback-Liebler cost.
+
+\begin{figure}[ht]
+\center\includegraphics[width=.55\textwidth]{img/Smileys_basis.png}
+\includegraphics[width=.15\textwidth]{img/Smileys_data.png}
+\label{ig:smileyLearned}
+\caption{(Left) Basic elements for making smiley faces. (Right) Three examples of generated smileys}
+\end{figure}
+
+\begin{figure}[ht]
+\center\includegraphics[width=.45\textwidth]{img/Smiley_dictionary_KL.png}
+\hspace{.08\linewidth}
+\includegraphics[width=.45\textwidth]{img/Smiley_dictionary_wass.png}
+\label{ig:smileyLearned}
+\caption{(Left) Dictionary learned by NMF with a KL divergence cost. (Right) Dictionary learned with our method}
+\end{figure}
+
+\subsection{Learning color palettes}
+
+We also applied our method to color histograms of images, in order to learn basic color palettes. We used the Oxford flower database and applied the following preprocessing: we mapped the images to their chrominance in the YUV space (the U and V channels), then quantized the colors appearing in the database using k-means to obtain histograms. We took the distance between to bins in a histogram as the distance between the corresponding cluster means in the chrominance space. Figure \ref{fig:colorPalettes} shows the results of this experiment. Each palette has a dominant color, which could correspond to the color palette of a specific kind of flower or of a kind of background (grass, gravel\dots).
+
+%\begin{figure}[ht]
+%\includegraphics[width=.9\textwidth]{img/palettes_naive_10.png}
+%\label{ig:colorPalettes}
+%\caption{10 palettes learning with our method. Each color in a palette is represented by a point on its (U,V) coordinates whose size is positively linked to its weight in the palette}
+%\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[width=.9\textwidth]{img/palettes_10.png}
+\label{ig:colorPalettes}
+\caption{10 palettes learning with our method. Each color in a palette is represented by a 20-by-20 image in which each of the 400 pixels was sampled iid from the probability distribution represented by the palette's histogram}
+\end{figure}
+
+
+
+

@@ -1,0 +1,206 @@
+\begin{thebibliography}{10}
+
+\bibitem{AbrahamRadon}
+I.~Abraham, R.~Abraham, M.~Bergounioux, and G.~Carlier.
+\newblock Tomographic reconstruction from a few views: a multi-marginal optimal
+  transport approach.
+\newblock {\em Preprint Hal-01065981}, 2014.
+
+\bibitem{Carlier_wasserstein_barycenter}
+M.~Agueh and G.~Carlier.
+\newblock Barycenters in the {W}asserstein space.
+\newblock {\em SIAM J. on Mathematical Analysis}, 43(2):904--924, 2011.
+
+\bibitem{ambrosio2006gradient}
+L.~Ambrosio, N.~Gigli, and G.~Savar{\'e}.
+\newblock {\em Gradient flows in metric spaces and in the space of probability
+  measures}.
+\newblock Springer, 2006.
+
+\bibitem{banerjee2005clustering}
+A.~Banerjee, S.~Merugu, I.~S Dhillon, and J.~Ghosh.
+\newblock Clustering with {Bregman} divergences.
+\newblock {\em The Journal of Machine Learning Research}, 6:1705--1749, 2005.
+
+\bibitem{BauschkeCombettes11}
+H.~H. Bauschke and P.~L. Combettes.
+\newblock {\em Convex Analysis and Monotone Operator Theory in {H}ilbert
+  Spaces.}
+\newblock Springer-Verlag, New York, 2011.
+
+\bibitem{beck-fista}
+A.~Beck and M.~Teboulle.
+\newblock A fast iterative shrinkage-thresholding algorithm for linear inverse
+  problems.
+\newblock {\em Journal on Imaging Sciences}, 2(1):183--202, 2009.
+
+\bibitem{DBLP:journals/siamsc/BenamouCCNP15}
+J-D. Benamou, G.~Carlier, M.~Cuturi, L.~Nenna, and G.~Peyr{\'e}.
+\newblock Iterative {Bregman} projections for regularized transportation
+  problems.
+\newblock {\em SIAM Journal on Scientific Computing}, 37(2):A1111--A1138, 2015.
+
+\bibitem{BigotBarycenter}
+J.~Bigot and T.~Klein.
+\newblock Consistent estimation of a population barycenter in the {Wasserstein}
+  space.
+\newblock {\em Preprint arXiv:1212.2562}, 2012.
+
+\bibitem{2013-Bonneel-barycenter}
+N.~Bonneel, J.~Rabin, G.~Peyr{\'e}, and H.~Pfister.
+\newblock Sliced and radon {Wasserstein} barycenters of measures.
+\newblock {\em Journal of Mathematical Imaging and Vision}, 51(1):22--45, 2015.
+
+\bibitem{Bonneel-displacement}
+N.~Bonneel, M.~{van de Panne}, S.~Paris, and W.~Heidrich.
+\newblock Displacement interpolation using lagrangian mass transport.
+\newblock {\em ACM Transactions on Graphics (SIGGRAPH ASIA'11)}, 30(6), 2011.
+
+\bibitem{Boyd:1072}
+S.~Boyd and L.~Vandenberghe.
+\newblock {\em Convex Optimization}.
+\newblock Cambridge University Press, 2004.
+
+\bibitem{Burger-JKO}
+M.~Burger, M.~Franeka, and C-B. Schonlieb.
+\newblock Regularised regression and density estimation based on optimal
+  transport.
+\newblock {\em Appl. Math. Res. Express}, 2:209--253, 2012.
+
+\bibitem{Carlier-NumericsBarycenters}
+G.~Carlier, A.~Oberman, and E.~Oudet.
+\newblock Numerical methods for matching for teams and {Wasserstein}
+  barycenters.
+\newblock Preprint hal-00987292, Preprint HAL-00987292, 2014.
+
+\bibitem{2015-Caselles-tv}
+V.~Caselles, A.~Chambolle, and M.~Novaga.
+\newblock The discontinuity set of solutions of the {TV} denoising problem and
+  some extensions.
+\newblock {\em SIAM Multiscale Modeling and Simulation}, 6(3):879--894, 2007.
+
+\bibitem{cuturi2013sinkhorn}
+M.~Cuturi.
+\newblock Sinkhorn distances: Lightspeed computation of optimal transport.
+\newblock In {\em Advances in Neural Information Processing Systems 26}, pages
+  2292--2300, 2013.
+
+\bibitem{cuturi2014fast}
+M.~Cuturi and A.~Doucet.
+\newblock Fast computation of {Wasserstein} barycenters.
+\newblock In {\em Proceedings of the 31st International Conference on Machine
+  Learning (ICML-14)}, pages 685--693, 2014.
+
+\bibitem{GianazzaARMA}
+U.~Gianazza, G.~Savar\'e, and G.~Toscani.
+\newblock The wasserstein gradient flow of the {Fisher} information and the
+  quantum drift-diffusion equation.
+\newblock {\em Archive for Rational Mechanics and Analysis}, 194(1):133--220,
+  2009.
+
+\bibitem{jordan1998variational}
+R.~Jordan, D.~Kinderlehrer, and O.~Otto.
+\newblock The variational formulation of the {Fokker}-{Planck} equation.
+\newblock {\em SIAM journal on mathematical analysis}, 29(1):1--17, 1998.
+
+\bibitem{lee1999learning}
+D.~D. Lee and H.~S. Seung.
+\newblock Learning the parts of objects by non-negative matrix factorization.
+\newblock {\em Nature}, 401(6755):788--791, 1999.
+
+\bibitem{Lorentz}
+J.~Lellmann, D.~Lorenz, C.-B. Schonlieb, and T.~Valkonen.
+\newblock Imaging with kantorovich-rubinstein discrepancy.
+\newblock {\em to appear in SIAM Journal on Imaging Sciences}, 2015.
+
+\bibitem{Levy3d}
+B.~Levy.
+\newblock A numerical algorithm for {$L^2$} semi-discrete optimal transport in
+  3d.
+\newblock {\em M2AN, to appear}, 2015.
+
+\bibitem{MassGenTransport}
+J.~Maas, M.~Rumpf, C.~Schonlieb, and S.~Simon.
+\newblock A generalized model for optimal transport of images including
+  dissipation and density modulation.
+\newblock {\em Arxiv preprint}, 2014.
+
+\bibitem{Merigot2011}
+Q.~M\'erigot.
+\newblock A multiscale approach to optimal transport.
+\newblock {\em Computer Graphics Forum}, 30(5):1583--1592, 2011.
+
+\bibitem{JeffreysCentroid-2013}
+F.~Nielsen.
+\newblock Jeffreys centroids: {A} closed-form expression for positive
+  histograms and a guaranteed tight approximation for frequency histograms.
+\newblock {\em IEEE Signal Processing Letters (SPL)}, 20(7), 2013.
+
+\bibitem{otto2001geometry}
+F.~Otto.
+\newblock The geometry of dissipative evolution equations: the porous medium
+  equation.
+\newblock {\em Communications in partial differential equations},
+  26(1-2):101--174, 2001.
+
+\bibitem{Pele-iccv2009}
+O.~Pele and M.~Werman.
+\newblock Fast and robust earth mover's distances.
+\newblock In {\em ICCV'09}, 2009.
+
+\bibitem{Peyre-JKO}
+G.~Peyr{\'e}.
+\newblock Entropic wasserstein gradient flows.
+\newblock Preprint 1502.06216, arXiv, 2015.
+
+\bibitem{RabinPapadakisSSVM}
+J.~Rabin and N.~Papadakis.
+\newblock Convex color image segmentation with optimal transport distances.
+\newblock In {\em Proc. SSVM'15}, 2015.
+
+\bibitem{RubTomGui00}
+Y.~Rubner, C.~Tomasi, and L.J. Guibas.
+\newblock The earth mover's distance as a metric for image retrieval.
+\newblock {\em IJCV: International Journal of Computer Vision}, 40, 2000.
+
+\bibitem{SchmitzerSegmentation}
+B.~Schmitzer and C.~Schnorr.
+\newblock Object segmentation by shape matching with wasserstein modes.
+\newblock In {\em Proc. EMMCVPR'13}, volume 8081 of {\em Lecture Notes in
+  Computer Science}, pages 123--136. Springer Berlin Heidelberg, 2013.
+
+\bibitem{2015-solomon-siggraph}
+J.~Solomon, F.~de~Goes, G.~Peyr{\'e}, M.~Cuturi, A.~Butscher, A.~Nguyen, T.~Du,
+  and L.~Guibas.
+\newblock Convolutional wasserstein distances: Efficient optimal transportation
+  on geometric domains.
+\newblock {\em ACM Transactions on Graphics (Proc. SIGGRAPH 2015)}, to appear,
+  2015.
+
+\bibitem{Solomon-ICML}
+J.~Solomon, R.M. Rustamov, L.~Guibas, and A.~Butscher.
+\newblock Wasserstein propagation for semi-supervised learning.
+\newblock In {\em Proc. ICML 2014}, 2014.
+
+\bibitem{SchnorSegmentation}
+P.~Swoboda and C.~Schnorr.
+\newblock Convex variational image restoration with histogram.
+\newblock {\em SIAM J. Imag. Sci.}, 6(3):1719?--1735, 2013.
+
+\bibitem{villani09}
+C.~Villani.
+\newblock {\em Optimal transport: old and new}, volume 338.
+\newblock Springer Verlag, 2009.
+
+\bibitem{2014-xia-siims}
+G-S. Xia, S.~Ferradans, G.~Peyr{\'e}, and J-F. Aujol.
+\newblock Synthesizing and mixing stationary gaussian texture models.
+\newblock {\em SIAM Journal on Imaging Sciences}, 7(1):476--508, 2014.
+
+\bibitem{ZenICPR14}
+G.~Zen, E.~Ricci, and N.~Sebe.
+\newblock Simultaneous ground metric learning and matrix factorization with
+  earth movers distance.
+\newblock {\em Proc. ICPR'14}, 2014.
+
+\end{thebibliography}

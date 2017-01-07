@@ -1,0 +1,46 @@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Wasserstein Propagation}
+
+The dual approach can be easily extended to more complicated convex functionals involving Wasserstein distances. To illustrate this, we show how the Wassertein propagation problem introduced by~\cite{Solomon-ICML} can be solved efficiently with our approach. This problem considers a graph with nodes indexed by $\Nn = \Nn_S \cup \Nn_T$. Here $t \in \Nn_T$ indexes boundary nodes where fixed input distributions $p_t \in \RR^N$ are defined. The goal is to propagate these histograms to the inner nodes $s \in \Nn_S$ to compute inner histograms $p_s \in \Sigma_n$
+\eql{\label{eq-wass-propagation}
+	\umin{ (p_s)_{s \in \Nn_S} }
+		\sum_{ (s,t) \in \Ee_{S,T} }  \la_{s,t} W(p_s,q_t)
+		+ 
+		\sum_{ (s,s') \in \Ee_{S} }  \la_{s,s'} W(p_s,p_{s'})
+}
+where $\la_{s,t} \geq 0$ are weights, and $\Ee_{S,T}$ denotes the set of (non-directed) edges between nodes of $\Nn_S$ and $\Nn_T$, and $\Ee_S$ denoted interior edges between two nodes of $\Nn_S$. Similarly to the approach outlined in Theorem~\ref{prop-dual-energy}, we define a dual optimization problem by introducing, for each interior index $s$, duplicated histograms $h_{s,e} \in \Si_n$ and the corresponding dual variable $g_{s,e} \in \RR^N$ for each edge $e=(s,t) \in \Ee_{S,T} \cup \Ee_S$ which we denote as $e \supset s$. The dual problem amounts to solving:
+\eq{
+	\umin{ (g_{s,e})_{s \in \Nn_s}^{e \supset s} }
+		\sum_{ e=(s,t) \in \Ee_{S,T} }  \la_{s,t} H_{q_t}^*(g_{s,e})
+		+ 
+		\sum_{ e=(s,s') \in \Ee_{S} } \la_{s,s'} W^*(g_{s,e},g_{s',e})
+}
+\eq{
+	\qstq	\foralls s \in \Nn_S, \quad \sum_{e=(s,t) \supset s} \la_{s,t} g_{s,e} = 0.
+}
+The primal variables are then retrieved by the relationships
+\eq{
+	\foralls (s,t) \in \Ee_{S,T}, \; p_s = \nabla H_{q_t}^*(g_{s,e}), 
+	\qandq
+	\foralls e=(s,s') \in \Ee_{S}, \; (p_s,p_s') = \nabla W_{\ga}^*(g_{s,e},g_{s',e}).	
+}
+
+
+
+%%%
+\paragraph{Wasserstein Propagation}
+
+The Wassertein propagation problem introduced in~\cite{Solomon-ICML} considers histograms $(p_t)_{t \in \Nn}$ indexed by nodes $\Nn$ of a weighted graph, where $\la_{t,t'} > 0$ if there is an edge $(t,t') \in \Nn \times \Nn$. These histograms solve
+\eql{\label{eq-wass-propag}
+	\umin{(p_t)_t} \sum_{t \sim t'} \la_{t,t'} W(p_t,p_t')
+	\quad\text{subj. to}\quad
+	\foralls t \in \tilde\Nn, \quad p_t = q_t,
+}
+where $\tilde\Nn \subset \Nn$ indexes a set of prescribed input histograms $(q_t)_{t \in \tilde\Nn}$. 
+The barycenter problem~\eqref{eq-variational-barycenter-discrete} is a special case with only a single free variable and a star-like graph.
+%
+It is possible to define a dual problem where the dual variables are indexed by the edge of the graph. The dual objective function is a sum of Legendre transforms of $W$ with respect to both variables, as defined in~\eqref{eq-dfn-dual-bothvar}. It is thus possible to solve~\eqref{eq-wass-propag} using a projected gradient descent thanks to the closed form expression~\eqref{eq-grad-bothvar} for the gradient.
+
+

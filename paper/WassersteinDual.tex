@@ -1,0 +1,66 @@
+% \documentclass[10pt]{article}
+\documentclass[final]{siamltex}
+
+\usepackage{subcaption}
+\usepackage{hyperref} %BUG if put after
+
+% Be sure to use PDF Latex
+\pdfoutput=1
+
+\usepackage[latin1]{inputenc}
+\usepackage{mystyle}
+\usepackage{url}
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% format A4
+%\usepackage{vmargin}
+%\setpapersize{A4} 
+
+\graphicspath{{./images/}}
+
+
+\hypersetup{  
+   bookmarks=true,
+   backref=true,
+   pagebackref=false,
+   colorlinks=true,
+   linkcolor=blue,
+   citecolor=red,
+   urlcolor=blue,
+   pdftitle={A Smoothed Dual Approach for Variational Wasserstein Problems},
+   pdfauthor={Marco Cuturi and Gabriel Peyr\'e},
+   pdfsubject={A Smoothed Dual Approach for Variational Wasserstein Problems}
+}
+
+\title{A Smoothed Dual Approach for Variational Wasserstein Problems}
+
+\author{Marco Cuturi\footnotemark[1] and Gabriel Peyr\'e\footnotemark[2]}
+
+\begin{document}
+
+\maketitle
+
+\footnotetext[1]{Graduate School of Informatics, Kyoto University}
+\footnotetext[2]{CEREMADE, Universit\'e Paris-Dauphine, Place du Marechal De Lattre De Tassigny, 75775 Paris 16, FRANCE}
+
+\input sections/sec-abstract
+\input sections/sec-intro
+\input sections/sec-wasserstein
+\input sections/sec-dual-algo
+\input sections/sec-experiments
+\input sections/sec-regularized-barycenters
+\input sections/sec-conclusion
+\appendix
+\input sections/sec-appendix
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{refs}
+
+
+\end{document}
+

@@ -1,0 +1,2073 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.9.19)  7 JAN 2017 20:43
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**WassersteinDual.tex
+(./WassersteinDual.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(./siamltex.cls
+Document Class: siamltex 1996/10/11 v1.2 LaTeX document class
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/leqno.clo
+File: leqno.clo 2015/03/31 v1.1i Standard LaTeX option (left equation numbers)
+) (./siam10.clo
+File: siam10.clo 1994/10/01 v1.0 SIAM LaTeX file (size option)
+)
+\c@section=\count79
+\c@subsection=\count80
+\c@subsubsection=\count81
+\c@paragraph=\count82
+\c@subparagraph=\count83
+\c@rmnum=\count84
+\c@muni=\count85
+\c@theorem=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\captionmargin=\dimen103
+\captionmargin@=\dimen104
+\captionwidth=\dimen105
+\caption@tempdima=\dimen106
+\caption@indent=\dimen107
+\caption@parindent=\dimen108
+\caption@hangindent=\dimen109
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\footnotesize \setlengt
+h {\parindent }{1.5pc} \ifx \@captype \@figtxt \vskip \abovecaptionskip \setbox
+ \@tempboxa \hbox {{\normalfont \scshape #1}. {\normalfont \itshape #2}}\ifdim 
+\wd \@tempboxa >\hsize {\normalfont \scshape #1}. {\normalfont \itshape #2}\par
+ \else \global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }\fi
+ \else \hbox to\hsize {\hfil {\normalfont \scshape #1}\hfil }\setbox \@tempboxa
+ \hbox {{\normalfont \itshape #2}}\ifdim \wd \@tempboxa >\hsize {\normalfont \i
+tshape #2}\par \else \global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempb
+oxa \hfil }\fi \vskip \belowcaptionskip \fi .
+\c@ContinuedFloat=\count89
+)
+\c@subfigure=\count90
+\c@subtable=\count91
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2016/05/05 v6.83n Hypertext links for LaTeX
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/05/16 v1.17 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen110
+\Hy@linkcounter=\count92
+\Hy@pagecounter=\count93
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2016/05/05 v6.83n Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count94
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `final' set `true' on input line 4322.
+Package hyperref Info: Hyper figures OFF on input line 4446.
+Package hyperref Info: Link nesting OFF on input line 4451.
+Package hyperref Info: Hyper index ON on input line 4454.
+Package hyperref Info: Plain pages OFF on input line 4461.
+Package hyperref Info: Backreferencing OFF on input line 4466.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4691.
+\c@Hy@tempcnt=\count95
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5044.
+\XeTeXLinkMargin=\dimen111
+\Fld@menulength=\count96
+\Field@Width=\dimen112
+\Fld@charsize=\dimen113
+Package hyperref Info: Hyper figures OFF on input line 6298.
+Package hyperref Info: Link nesting OFF on input line 6303.
+Package hyperref Info: Hyper index ON on input line 6306.
+Package hyperref Info: backreferencing OFF on input line 6313.
+Package hyperref Info: Link coloring OFF on input line 6318.
+Package hyperref Info: Link coloring with OCG OFF on input line 6323.
+Package hyperref Info: PDF/A mode OFF on input line 6328.
+LaTeX Info: Redefining \ref on input line 6368.
+LaTeX Info: Redefining \pageref on input line 6372.
+\Hy@abspage=\count97
+\c@Item=\count98
+\c@Hfootnote=\count99
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2016/05/05 v6.83n Hyperref driver for pdfTeX
+\Fld@listcount=\count100
+\c@bookmark@seq@number=\count101
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip43
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2015/03/17 v1.2c Input encoding file
+)) (./mystyle.sty
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/10 v2.15b AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen114
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen115
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count102
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count103
+\leftroot@=\count104
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count105
+\DOTSCASE@=\count106
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen116
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+\macc@depth=\count107
+\c@MaxMatrixCols=\count108
+\dotsspace@=\muskip11
+\c@parentequation=\count109
+\dspbrk@lvl=\count110
+\tag@help=\toks18
+\row@=\count111
+\column@=\count112
+\maxfields@=\count113
+\andhelp@=\toks19
+\eqnshift@=\dimen117
+\alignsep@=\dimen118
+\tagshift@=\dimen119
+\tagwidth@=\dimen120
+\totwidth@=\dimen121
+\lineht@=\dimen122
+\@envbody=\toks20
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/doublestroke/dsfont.sty
+Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 96.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count114
+))
+\Gin@req@height=\dimen123
+\Gin@req@width=\dimen124
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen125
+\extrarowheight=\dimen126
+\NC@list=\toks22
+\extratabsurround=\skip47
+\backup@length=\skip48
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
+\TX@col@width=\dimen127
+\TX@old@table=\dimen128
+\TX@old@col=\dimen129
+\TX@target=\dimen130
+\TX@delta=\dimen131
+\TX@cols=\count115
+\TX@ftn=\toks23
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+\c@thm=\count116
+\c@prop=\count117
+\c@defn=\count118
+\c@cor=\count119
+\c@lem=\count120
+\c@rem=\count121
+\c@exmp=\count122
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count123
+\float@exts=\toks24
+\float@box=\box28
+\@float@everytoks=\toks25
+\@floatcapt=\box29
+)
+\@float@every@table=\toks26
+\@float@every@listing=\toks27
+\c@listing=\count124
+\restsubwidth=\skip49
+\restsubheight=\skip50
+\restsubmoreheight=\skip51
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen132
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks28
+\c@algorithm=\count125
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count126
+\c@ALC@line=\count127
+\c@ALC@rem=\count128
+\c@ALC@depth=\count129
+\ALC@tlm=\skip52
+\algorithmicindent=\skip53
+)
+
+Package hyperref Warning: Option `bookmarks' has already been used,
+(hyperref)                setting the option has no effect on input line 35.
+
+
+Package hyperref Warning: Option `backref' has already been used,
+(hyperref)                setting the option has no effect on input line 35.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 35.
+
+Package hyperref Info: Option `colorlinks' set `true' on input line 35.
+(./WassersteinDual.aux)
+\openout1 = `WassersteinDual.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box30
+Package hyperref Info: Link coloring ON on input line 47.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count130
+)
+LaTeX Info: Redefining \ref on input line 47.
+LaTeX Info: Redefining \pageref on input line 47.
+LaTeX Info: Redefining \nameref on input line 47.
+
+(./WassersteinDual.out) (./WassersteinDual.out)
+\@outlinefile=\write3
+\openout3 = `WassersteinDual.out'.
+
+
+(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count131
+\scratchdimen=\dimen133
+\scratchbox=\box31
+\nofMPsegments=\count132
+\nofMParguments=\count133
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count134
+\MPscratchDim=\dimen134
+\MPnumerator=\count135
+\makeMPintoPDFobject=\count136
+\everyMPtoPDFconversion=\toks30
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    Try loading font information for U+msa on input line 50.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 50.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(./sections/sec-abstract.tex) (./sections/sec-intro.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 9.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 9.
+ [1
+
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 57.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+))
+(./sections/sec-wasserstein.tex [2] [3] [4] [5]) (./sections/sec-dual-algo.tex
+[6]
+
+LaTeX Warning: Citation `rockafellar1996convex' on page 7 undefined on input li
+ne 36.
+
+[7]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 83.
+ [8] [9]) (./sections/sec-experiments.tex [10]
+Overfull \hbox (6.87877pt too wide) in paragraph at lines 23--24
+[]\OT1/cmr/m/n/10 This nu-mer-i-cal ex-per-i-ment does not con-tra-dict the fac
+t that the dis-cretized barycen-
+ []
+
+<./images/smoothvsnonsmooth.pdf, id=258, 970.62625pt x 639.38875pt>
+File: ./images/smoothvsnonsmooth.pdf Graphic file (type pdf)
+
+<use ./images/smoothvsnonsmooth.pdf>
+Package pdftex.def Info: ./images/smoothvsnonsmooth.pdf used on input line 36.
+(pdftex.def)             Requested size: 277.7878pt x 182.98866pt.
+
+<./images/nonsmoothsnot_conv.pdf, id=261, 983.675pt x 647.41875pt>
+File: ./images/nonsmoothsnot_conv.pdf Graphic file (type pdf)
+
+<use ./images/nonsmoothsnot_conv.pdf>
+Package pdftex.def Info: ./images/nonsmoothsnot_conv.pdf used on input line 41.
+
+(pdftex.def)             Requested size: 277.7878pt x 182.82698pt.
+
+<./images/experiments.pdf, id=266, 1192.455pt x 779.91376pt>
+File: ./images/experiments.pdf Graphic file (type pdf)
+
+<use ./images/experiments.pdf>
+Package pdftex.def Info: ./images/experiments.pdf used on input line 57.
+(pdftex.def)             Requested size: 370.38374pt x 242.24678pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11 <./images/smoothvsnonsmooth.pdf>] [12 <./images/nonsmoothsnot_conv.pdf>])
+(./sections/sec-regularized-barycenters.tex [13 <./images/experiments.pdf>]
+[14] [15]
+<./images/tv-regularization/bary4-aniso/lambda0/bary1.png, id=421, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary1.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary1.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary1.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary2.png, id=422, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary2.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary2.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary2.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary3.png, id=423, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary3.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary3.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary3.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary4.png, id=424, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary4.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary4.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary4.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary5.png, id=425, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary5.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary5.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary5.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary6.png, id=426, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary6.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary6.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary6.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary7.png, id=427, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary7.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary7.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary7.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary8.png, id=428, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary8.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary8.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary8.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary9.png, id=429, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary9.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary9.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary9.p
+ng used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary10.png, id=430, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary10.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary10.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary10.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary11.png, id=431, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary11.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary11.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary11.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary12.png, id=432, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary12.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary12.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary12.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary13.png, id=433, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary13.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary13.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary13.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary14.png, id=434, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary14.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary14.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary14.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary15.png, id=435, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary15.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary15.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary15.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary16.png, id=436, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary16.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary16.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary16.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary17.png, id=437, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary17.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary17.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary17.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary18.png, id=438, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary18.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary18.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary18.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary19.png, id=439, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary19.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary19.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary19.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary20.png, id=440, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary20.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary20.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary20.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary21.png, id=441, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary21.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary21.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary21.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary22.png, id=442, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary22.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary22.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary22.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary23.png, id=443, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary23.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary23.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary23.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary24.png, id=444, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary24.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary24.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary24.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda0/bary25.png, id=445, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda0/bary25.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-aniso/lambda0/bary25.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda0/bary25.
+png used on input line 216.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary1.png, id=446, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary1.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary1.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary1.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary2.png, id=447, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary2.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary2.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary2.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary3.png, id=448, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary3.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary3.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary3.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary4.png, id=449, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary4.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary4.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary4.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary5.png, id=450, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary5.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary5.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary5.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary6.png, id=451, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary6.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary6.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary6.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary7.png, id=452, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary7.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary7.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary7.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary8.png, id=453, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary8.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary8.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary8.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary9.png, id=454, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary9.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary4-iso/lambda1000/bary9.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary9.
+png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary10.png, id=455, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary10.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary10.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary10
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary11.png, id=456, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary11.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary11.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary11
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary12.png, id=457, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary12.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary12.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary12
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary13.png, id=458, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary13.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary13.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary13
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary14.png, id=459, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary14.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary14.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary14
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary15.png, id=460, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary15.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary15.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary15
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary16.png, id=461, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary16.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary16.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary16
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary17.png, id=462, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary17.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary17.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary17
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary18.png, id=463, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary18.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary18.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary18
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary19.png, id=464, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary19.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary19.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary19
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary20.png, id=465, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary20.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary20.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary20
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary21.png, id=466, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary21.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary21.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary21
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary22.png, id=467, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary22.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary22.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary22
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary23.png, id=468, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary23.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary23.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary23
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary24.png, id=469, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary24.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary24.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary24
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-iso/lambda1000/bary25.png, id=470, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-iso/lambda1000/bary25.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-iso/lambda1000/bary25.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-iso/lambda1000/bary25
+.png used on input line 217.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary1.png, id=471, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary1.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary1.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary2.png, id=472, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary2.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary2.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary2
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary3.png, id=473, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary3.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary3.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary3
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary4.png, id=474, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary4.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary4.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary4
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary5.png, id=475, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary5.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary5.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary5
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary6.png, id=476, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary6.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary6.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary6
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary7.png, id=477, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary7.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary7.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary7
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary8.png, id=478, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary8.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary8.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary8
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary9.png, id=479, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary9.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary9.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary9
+.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary10.png, id=480, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary10.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary10.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+0.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary11.png, id=481, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary11.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary11.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+1.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary12.png, id=482, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary12.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary12.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+2.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary13.png, id=483, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary13.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary13.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+3.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary14.png, id=484, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary14.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary14.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+4.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary15.png, id=485, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary15.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary15.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+5.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary16.png, id=486, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary16.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary16.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+6.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary17.png, id=487, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary17.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary17.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+7.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary18.png, id=488, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary18.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary18.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+8.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary19.png, id=489, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary19.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary19.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary1
+9.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary20.png, id=490, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary20.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary20.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary2
+0.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary21.png, id=491, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary21.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary21.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary2
+1.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary22.png, id=492, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary22.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary22.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary2
+2.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary23.png, id=493, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary23.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary23.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary2
+3.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary24.png, id=494, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary24.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary24.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary2
+4.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda500/bary25.png, id=495, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda500/bary25.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda500/bary25.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda500/bary2
+5.png used on input line 218.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary1.png, id=496, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary1.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary1.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+1.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary2.png, id=497, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary2.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary2.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+2.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary3.png, id=498, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary3.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary3.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+3.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary4.png, id=499, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary4.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary4.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+4.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary5.png, id=500, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary5.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary5.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+5.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary6.png, id=501, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary6.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary6.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+6.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary7.png, id=502, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary7.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary7.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+7.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary8.png, id=503, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary8.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary8.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+8.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary9.png, id=504, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary9.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary9.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+9.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary10.png, id=505, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary10.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary10.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+10.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary11.png, id=506, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary11.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary11.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+11.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary12.png, id=507, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary12.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary12.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+12.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary13.png, id=508, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary13.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary13.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+13.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary14.png, id=509, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary14.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary14.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+14.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary15.png, id=510, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary15.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary15.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+15.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary16.png, id=511, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary16.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary16.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+16.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary17.png, id=512, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary17.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary17.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+17.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary18.png, id=513, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary18.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary18.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+18.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary19.png, id=514, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary19.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary19.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+19.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary20.png, id=515, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary20.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary20.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+20.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary21.png, id=516, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary21.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary21.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+21.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary22.png, id=517, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary22.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary22.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+22.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary23.png, id=518, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary23.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary23.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+23.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary24.png, id=519, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary24.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary24.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+24.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+<./images/tv-regularization/bary4-aniso/lambda2000/bary25.png, id=520, 99.37125
+pt x 99.37125pt>
+File: ./images/tv-regularization/bary4-aniso/lambda2000/bary25.png Graphic file
+ (type png)
+
+<use ./images/tv-regularization/bary4-aniso/lambda2000/bary25.png>
+Package pdftex.def Info: ./images/tv-regularization/bary4-aniso/lambda2000/bary
+25.png used on input line 219.
+(pdftex.def)             Requested size: 33.77913pt x 33.77971pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[16]
+<./images/tv-regularization/bary2-iso/bary1-lambda0.png, id=536, 99.37125pt x 9
+9.37125pt>
+File: ./images/tv-regularization/bary2-iso/bary1-lambda0.png Graphic file (type
+ png)
+ <use ./images/tv-regularization/bary2-iso/bary1-lambda0.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-iso/bary1-lambda0.png
+ used on input line 237.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-iso/bary1-lambda200.png, id=537, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary2-iso/bary1-lambda200.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary2-iso/bary1-lambda200.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-iso/bary1-lambda200.p
+ng used on input line 238.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-iso/bary1-lambda400.png, id=538, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary2-iso/bary1-lambda400.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary2-iso/bary1-lambda400.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-iso/bary1-lambda400.p
+ng used on input line 239.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-iso/bary1-lambda600.png, id=539, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary2-iso/bary1-lambda600.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary2-iso/bary1-lambda600.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-iso/bary1-lambda600.p
+ng used on input line 240.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-iso/bary1-lambda800.png, id=540, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary2-iso/bary1-lambda800.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary2-iso/bary1-lambda800.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-iso/bary1-lambda800.p
+ng used on input line 241.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-iso/bary1-lambda1000.png, id=541, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary2-iso/bary1-lambda1000.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary2-iso/bary1-lambda1000.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-iso/bary1-lambda1000.
+png used on input line 242.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-iso/bary1-lambda2000.png, id=542, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary2-iso/bary1-lambda2000.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary2-iso/bary1-lambda2000.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-iso/bary1-lambda2000.
+png used on input line 243.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-iso/bary1-lambda3000.png, id=543, 99.37125pt 
+x 99.37125pt>
+File: ./images/tv-regularization/bary2-iso/bary1-lambda3000.png Graphic file (t
+ype png)
+ <use ./images/tv-regularization/bary2-iso/bary1-lambda3000.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-iso/bary1-lambda3000.
+png used on input line 244.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-aniso/bary1-lambda0.png, id=544, 99.37125pt x
+ 99.37125pt>
+File: ./images/tv-regularization/bary2-aniso/bary1-lambda0.png Graphic file (ty
+pe png)
+ <use ./images/tv-regularization/bary2-aniso/bary1-lambda0.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-aniso/bary1-lambda0.p
+ng used on input line 245.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-aniso/bary1-lambda200.png, id=545, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary2-aniso/bary1-lambda200.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary2-aniso/bary1-lambda200.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-aniso/bary1-lambda200
+.png used on input line 246.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-aniso/bary1-lambda400.png, id=546, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary2-aniso/bary1-lambda400.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary2-aniso/bary1-lambda400.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-aniso/bary1-lambda400
+.png used on input line 247.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-aniso/bary1-lambda600.png, id=547, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary2-aniso/bary1-lambda600.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary2-aniso/bary1-lambda600.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-aniso/bary1-lambda600
+.png used on input line 248.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-aniso/bary1-lambda800.png, id=548, 99.37125pt
+ x 99.37125pt>
+File: ./images/tv-regularization/bary2-aniso/bary1-lambda800.png Graphic file (
+type png)
+
+<use ./images/tv-regularization/bary2-aniso/bary1-lambda800.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-aniso/bary1-lambda800
+.png used on input line 249.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-aniso/bary1-lambda1000.png, id=549, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary2-aniso/bary1-lambda1000.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary2-aniso/bary1-lambda1000.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-aniso/bary1-lambda100
+0.png used on input line 250.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-aniso/bary1-lambda2000.png, id=550, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary2-aniso/bary1-lambda2000.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary2-aniso/bary1-lambda2000.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-aniso/bary1-lambda200
+0.png used on input line 251.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+<./images/tv-regularization/bary2-aniso/bary1-lambda3000.png, id=551, 99.37125p
+t x 99.37125pt>
+File: ./images/tv-regularization/bary2-aniso/bary1-lambda3000.png Graphic file 
+(type png)
+
+<use ./images/tv-regularization/bary2-aniso/bary1-lambda3000.png>
+Package pdftex.def Info: ./images/tv-regularization/bary2-aniso/bary1-lambda300
+0.png used on input line 252.
+(pdftex.def)             Requested size: 46.29796pt x 46.29964pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[17 <./images/tv-regularization/bary4-aniso/lambda0/bary1.png (PNG copy)> <./im
+ages/tv-regularization/bary4-aniso/lambda0/bary2.png (PNG copy)> <./images/tv-r
+egularization/bary4-aniso/lambda0/bary3.png (PNG copy)> <./images/tv-regulariza
+tion/bary4-aniso/lambda0/bary4.png (PNG copy)> <./images/tv-regularization/bary
+4-aniso/lambda0/bary5.png (PNG copy)> <./images/tv-regularization/bary4-aniso/l
+ambda0/bary6.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda0/ba
+ry7.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda0/bary8.png (
+PNG copy)> <./images/tv-regularization/bary4-aniso/lambda0/bary9.png (PNG copy)
+> <./images/tv-regularization/bary4-aniso/lambda0/bary10.png (PNG copy)> <./ima
+ges/tv-regularization/bary4-aniso/lambda0/bary11.png (PNG copy)> <./images/tv-r
+egularization/bary4-aniso/lambda0/bary12.png (PNG copy)> <./images/tv-regulariz
+ation/bary4-aniso/lambda0/bary13.png (PNG copy)> <./images/tv-regularization/ba
+ry4-aniso/lambda0/bary14.png (PNG copy)> <./images/tv-regularization/bary4-anis
+o/lambda0/bary15.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda
+0/bary16.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda0/bary17
+.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda0/bary18.png (PN
+G copy)> <./images/tv-regularization/bary4-aniso/lambda0/bary19.png (PNG copy)>
+ <./images/tv-regularization/bary4-aniso/lambda0/bary20.png (PNG copy)> <./imag
+es/tv-regularization/bary4-aniso/lambda0/bary21.png (PNG copy)> <./images/tv-re
+gularization/bary4-aniso/lambda0/bary22.png (PNG copy)> <./images/tv-regulariza
+tion/bary4-aniso/lambda0/bary23.png (PNG copy)> <./images/tv-regularization/bar
+y4-aniso/lambda0/bary24.png (PNG copy)> <./images/tv-regularization/bary4-aniso
+/lambda0/bary25.png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda100
+0/bary1.png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda1000/bary2.
+png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda1000/bary3.png (PNG
+ copy)> <./images/tv-regularization/bary4-iso/lambda1000/bary4.png (PNG copy)> 
+<./images/tv-regularization/bary4-iso/lambda1000/bary5.png (PNG copy)> <./image
+s/tv-regularization/bary4-iso/lambda1000/bary6.png (PNG copy)> <./images/tv-reg
+ularization/bary4-iso/lambda1000/bary7.png (PNG copy)> <./images/tv-regularizat
+ion/bary4-iso/lambda1000/bary8.png (PNG copy)> <./images/tv-regularization/bary
+4-iso/lambda1000/bary9.png (PNG copy)> <./images/tv-regularization/bary4-iso/la
+mbda1000/bary10.png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda100
+0/bary11.png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda1000/bary1
+2.png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda1000/bary13.png (
+PNG copy)> <./images/tv-regularization/bary4-iso/lambda1000/bary14.png (PNG cop
+y)> <./images/tv-regularization/bary4-iso/lambda1000/bary15.png (PNG copy)> <./
+images/tv-regularization/bary4-iso/lambda1000/bary16.png (PNG copy)> <./images/
+tv-regularization/bary4-iso/lambda1000/bary17.png (PNG copy)> <./images/tv-regu
+larization/bary4-iso/lambda1000/bary18.png (PNG copy)> <./images/tv-regularizat
+ion/bary4-iso/lambda1000/bary19.png (PNG copy)> <./images/tv-regularization/bar
+y4-iso/lambda1000/bary20.png (PNG copy)> <./images/tv-regularization/bary4-iso/
+lambda1000/bary21.png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda1
+000/bary22.png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda1000/bar
+y23.png (PNG copy)> <./images/tv-regularization/bary4-iso/lambda1000/bary24.png
+ (PNG copy)> <./images/tv-regularization/bary4-iso/lambda1000/bary25.png (PNG c
+opy)> <./images/tv-regularization/bary4-aniso/lambda500/bary1.png (PNG copy)> <
+./images/tv-regularization/bary4-aniso/lambda500/bary2.png (PNG copy)> <./image
+s/tv-regularization/bary4-aniso/lambda500/bary3.png (PNG copy)> <./images/tv-re
+gularization/bary4-aniso/lambda500/bary4.png (PNG copy)> <./images/tv-regulariz
+ation/bary4-aniso/lambda500/bary5.png (PNG copy)> <./images/tv-regularization/b
+ary4-aniso/lambda500/bary6.png (PNG copy)> <./images/tv-regularization/bary4-an
+iso/lambda500/bary7.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lam
+bda500/bary8.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda500/
+bary9.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda500/bary10.
+png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda500/bary11.png (P
+NG copy)> <./images/tv-regularization/bary4-aniso/lambda500/bary12.png (PNG cop
+y)> <./images/tv-regularization/bary4-aniso/lambda500/bary13.png (PNG copy)> <.
+/images/tv-regularization/bary4-aniso/lambda500/bary14.png (PNG copy)> <./image
+s/tv-regularization/bary4-aniso/lambda500/bary15.png (PNG copy)> <./images/tv-r
+egularization/bary4-aniso/lambda500/bary16.png (PNG copy)> <./images/tv-regular
+ization/bary4-aniso/lambda500/bary17.png (PNG copy)> <./images/tv-regularizatio
+n/bary4-aniso/lambda500/bary18.png (PNG copy)> <./images/tv-regularization/bary
+4-aniso/lambda500/bary19.png (PNG copy)> <./images/tv-regularization/bary4-anis
+o/lambda500/bary20.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lamb
+da500/bary21.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda500/
+bary22.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda500/bary23
+.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda500/bary24.png (
+PNG copy)> <./images/tv-regularization/bary4-aniso/lambda500/bary25.png (PNG co
+py)> <./images/tv-regularization/bary4-aniso/lambda2000/bary1.png (PNG copy)> <
+./images/tv-regularization/bary4-aniso/lambda2000/bary2.png (PNG copy)> <./imag
+es/tv-regularization/bary4-aniso/lambda2000/bary3.png (PNG copy)> <./images/tv-
+regularization/bary4-aniso/lambda2000/bary4.png (PNG copy)> <./images/tv-regula
+rization/bary4-aniso/lambda2000/bary5.png (PNG copy)> <./images/tv-regularizati
+on/bary4-aniso/lambda2000/bary6.png (PNG copy)> <./images/tv-regularization/bar
+y4-aniso/lambda2000/bary7.png (PNG copy)> <./images/tv-regularization/bary4-ani
+so/lambda2000/bary8.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lam
+bda2000/bary9.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda200
+0/bary10.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda2000/bar
+y11.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda2000/bary12.p
+ng (PNG copy)> <./images/tv-regularization/bary4-aniso/lambda2000/bary13.png (P
+NG copy)> <./images/tv-regularization/bary4-aniso/lambda2000/bary14.png (PNG co
+py)> <./images/tv-regularization/bary4-aniso/lambda2000/bary15.png (PNG copy)> 
+<./images/tv-regularization/bary4-aniso/lambda2000/bary16.png (PNG copy)> <./im
+ages/tv-regularization/bary4-aniso/lambda2000/bary17.png (PNG copy)> <./images/
+tv-regularization/bary4-aniso/lambda2000/bary18.png (PNG copy)> <./images/tv-re
+gularization/bary4-aniso/lambda2000/bary19.png (PNG copy)> <./images/tv-regular
+ization/bary4-aniso/lambda2000/bary20.png (PNG copy)> <./images/tv-regularizati
+on/bary4-aniso/lambda2000/bary21.png (PNG copy)> <./images/tv-regularization/ba
+ry4-aniso/lambda2000/bary22.png (PNG copy)> <./images/tv-regularization/bary4-a
+niso/lambda2000/bary23.png (PNG copy)> <./images/tv-regularization/bary4-aniso/
+lambda2000/bary24.png (PNG copy)> <./images/tv-regularization/bary4-aniso/lambd
+a2000/bary25.png (PNG copy)>]
+<./images/meg/input/1-1.jpeg, id=566, 279.0425pt x 269.005pt>
+File: ./images/meg/input/1-1.jpeg Graphic file (type jpg)
+
+<use ./images/meg/input/1-1.jpeg>
+Package pdftex.def Info: ./images/meg/input/1-1.jpeg used on input line 291.
+(pdftex.def)             Requested size: 46.29796pt x 44.63019pt.
+
+<./images/meg/input/1-2.jpeg, id=567, 467.7475pt x 450.68375pt>
+File: ./images/meg/input/1-2.jpeg Graphic file (type jpg)
+
+<use ./images/meg/input/1-2.jpeg>
+Package pdftex.def Info: ./images/meg/input/1-2.jpeg used on input line 292.
+(pdftex.def)             Requested size: 46.29796pt x 44.60338pt.
+
+<./images/meg/input/1-3.jpeg, id=568, 463.7325pt x 450.68375pt>
+File: ./images/meg/input/1-3.jpeg Graphic file (type jpg)
+
+<use ./images/meg/input/1-3.jpeg>
+Package pdftex.def Info: ./images/meg/input/1-3.jpeg used on input line 293.
+(pdftex.def)             Requested size: 46.29796pt x 44.98848pt.
+
+<./images/meg/bary/bary1-mean.jpeg, id=569, 281.05pt x 270.00874pt>
+File: ./images/meg/bary/bary1-mean.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary1-mean.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary1-mean.jpeg used on input line 2
+94.
+(pdftex.def)             Requested size: 46.29796pt x 44.47948pt.
+
+<./images/meg/input/2-1.jpeg, id=570, 465.74pt x 449.68pt>
+File: ./images/meg/input/2-1.jpeg Graphic file (type jpg)
+
+<use ./images/meg/input/2-1.jpeg>
+Package pdftex.def Info: ./images/meg/input/2-1.jpeg used on input line 296.
+(pdftex.def)             Requested size: 46.29796pt x 44.69617pt.
+
+<./images/meg/input/2-2.jpeg, id=571, 465.74pt x 449.68pt>
+File: ./images/meg/input/2-2.jpeg Graphic file (type jpg)
+
+<use ./images/meg/input/2-2.jpeg>
+Package pdftex.def Info: ./images/meg/input/2-2.jpeg used on input line 297.
+(pdftex.def)             Requested size: 46.29796pt x 44.69617pt.
+
+<./images/meg/input/2-3.jpeg, id=572, 465.74pt x 448.67625pt>
+File: ./images/meg/input/2-3.jpeg Graphic file (type jpg)
+
+<use ./images/meg/input/2-3.jpeg>
+Package pdftex.def Info: ./images/meg/input/2-3.jpeg used on input line 298.
+(pdftex.def)             Requested size: 46.29796pt x 44.59639pt.
+
+<./images/meg/bary/bary2-mean.jpeg, id=573, 279.0425pt x 269.005pt>
+File: ./images/meg/bary/bary2-mean.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary2-mean.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary2-mean.jpeg used on input line 2
+99.
+(pdftex.def)             Requested size: 46.29796pt x 44.63019pt.
+
+<./images/meg/bary/bary1-lambda0.jpeg, id=574, 251.94125pt x 242.9075pt>
+File: ./images/meg/bary/bary1-lambda0.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary1-lambda0.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary1-lambda0.jpeg used on input lin
+e 308.
+(pdftex.def)             Requested size: 46.29796pt x 44.63695pt.
+
+<./images/meg/bary/bary1-lambda2.jpeg, id=575, 281.05pt x 270.00874pt>
+File: ./images/meg/bary/bary1-lambda2.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary1-lambda2.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary1-lambda2.jpeg used on input lin
+e 309.
+(pdftex.def)             Requested size: 46.29796pt x 44.47948pt.
+
+<./images/meg/bary/bary1-lambda4.jpeg, id=576, 279.0425pt x 270.00874pt>
+File: ./images/meg/bary/bary1-lambda4.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary1-lambda4.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary1-lambda4.jpeg used on input lin
+e 310.
+(pdftex.def)             Requested size: 46.29796pt x 44.7967pt.
+
+<./images/meg/bary/bary1-lambda8.jpeg, id=577, 279.0425pt x 270.00874pt>
+File: ./images/meg/bary/bary1-lambda8.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary1-lambda8.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary1-lambda8.jpeg used on input lin
+e 311.
+(pdftex.def)             Requested size: 46.29796pt x 44.7967pt.
+
+<./images/meg/bary/bary2-lambda0.jpeg, id=578, 279.0425pt x 270.00874pt>
+File: ./images/meg/bary/bary2-lambda0.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary2-lambda0.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary2-lambda0.jpeg used on input lin
+e 313.
+(pdftex.def)             Requested size: 46.29796pt x 44.7967pt.
+
+<./images/meg/bary/bary2-lambda2.jpeg, id=579, 279.0425pt x 270.00874pt>
+File: ./images/meg/bary/bary2-lambda2.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary2-lambda2.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary2-lambda2.jpeg used on input lin
+e 314.
+(pdftex.def)             Requested size: 46.29796pt x 44.7967pt.
+
+<./images/meg/bary/bary2-lambda4.jpeg, id=580, 280.04625pt x 269.005pt>
+File: ./images/meg/bary/bary2-lambda4.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary2-lambda4.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary2-lambda4.jpeg used on input lin
+e 315.
+(pdftex.def)             Requested size: 46.29796pt x 44.4701pt.
+
+<./images/meg/bary/bary2-lambda8.jpeg, id=581, 279.0425pt x 269.005pt>
+File: ./images/meg/bary/bary2-lambda8.jpeg Graphic file (type jpg)
+
+<use ./images/meg/bary/bary2-lambda8.jpeg>
+Package pdftex.def Info: ./images/meg/bary/bary2-lambda8.jpeg used on input lin
+e 316.
+(pdftex.def)             Requested size: 46.29796pt x 44.63019pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (0.25468pt too wide) in paragraph at lines 341--347
+\OT1/cmr/m/n/10 ing [] with the TV reg-u-lar-iza-tion us-ing the pro-jected gra
+-di-ent de-scent method [].
+ []
+
+[18 <./images/tv-regularization/bary2-iso/bary1-lambda0.png (PNG copy)> <./imag
+es/tv-regularization/bary2-iso/bary1-lambda200.png (PNG copy)> <./images/tv-reg
+ularization/bary2-iso/bary1-lambda400.png (PNG copy)> <./images/tv-regularizati
+on/bary2-iso/bary1-lambda600.png (PNG copy)> <./images/tv-regularization/bary2-
+iso/bary1-lambda800.png (PNG copy)> <./images/tv-regularization/bary2-iso/bary1
+-lambda1000.png (PNG copy)> <./images/tv-regularization/bary2-iso/bary1-lambda2
+000.png (PNG copy)> <./images/tv-regularization/bary2-iso/bary1-lambda3000.png 
+(PNG copy)> <./images/tv-regularization/bary2-aniso/bary1-lambda0.png (PNG copy
+)> <./images/tv-regularization/bary2-aniso/bary1-lambda200.png (PNG copy)> <./i
+mages/tv-regularization/bary2-aniso/bary1-lambda400.png (PNG copy)> <./images/t
+v-regularization/bary2-aniso/bary1-lambda600.png (PNG copy)> <./images/tv-regul
+arization/bary2-aniso/bary1-lambda800.png (PNG copy)> <./images/tv-regularizati
+on/bary2-aniso/bary1-lambda1000.png (PNG copy)> <./images/tv-regularization/bar
+y2-aniso/bary1-lambda2000.png (PNG copy)> <./images/tv-regularization/bary2-ani
+so/bary1-lambda3000.png (PNG copy)>] [19 <./images/meg/input/1-1.jpeg> <./image
+s/meg/input/1-2.jpeg> <./images/meg/input/1-3.jpeg> <./images/meg/bary/bary1-me
+an.jpeg> <./images/meg/input/2-1.jpeg> <./images/meg/input/2-2.jpeg> <./images/
+meg/input/2-3.jpeg> <./images/meg/bary/bary2-mean.jpeg> <./images/meg/bary/bary
+1-lambda0.jpeg> <./images/meg/bary/bary1-lambda2.jpeg> <./images/meg/bary/bary1
+-lambda4.jpeg> <./images/meg/bary/bary1-lambda8.jpeg> <./images/meg/bary/bary2-
+lambda0.jpeg> <./images/meg/bary/bary2-lambda2.jpeg> <./images/meg/bary/bary2-l
+ambda4.jpeg> <./images/meg/bary/bary2-lambda8.jpeg>]
+<./images/gradient-flow/randdisks/randdisks-flow-0.png, id=615, 255.95625pt x 2
+55.95625pt>
+File: ./images/gradient-flow/randdisks/randdisks-flow-0.png Graphic file (type 
+png)
+ <use ./images/gradient-flow/randdisks/randdisks-flow-0.png>
+Package pdftex.def Info: ./images/gradient-flow/randdisks/randdisks-flow-0.png 
+used on input line 377.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/randdisks/randdisks-flow-2.png, id=616, 255.95625pt x 2
+55.95625pt>
+File: ./images/gradient-flow/randdisks/randdisks-flow-2.png Graphic file (type 
+png)
+ <use ./images/gradient-flow/randdisks/randdisks-flow-2.png>
+Package pdftex.def Info: ./images/gradient-flow/randdisks/randdisks-flow-2.png 
+used on input line 378.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/randdisks/randdisks-flow-5.png, id=617, 255.95625pt x 2
+55.95625pt>
+File: ./images/gradient-flow/randdisks/randdisks-flow-5.png Graphic file (type 
+png)
+ <use ./images/gradient-flow/randdisks/randdisks-flow-5.png>
+Package pdftex.def Info: ./images/gradient-flow/randdisks/randdisks-flow-5.png 
+used on input line 379.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/randdisks/randdisks-flow-10.png, id=618, 255.95625pt x 
+255.95625pt>
+File: ./images/gradient-flow/randdisks/randdisks-flow-10.png Graphic file (type
+ png)
+ <use ./images/gradient-flow/randdisks/randdisks-flow-10.png>
+Package pdftex.def Info: ./images/gradient-flow/randdisks/randdisks-flow-10.png
+ used on input line 380.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/randdisks/randdisks-flow-15.png, id=619, 255.95625pt x 
+255.95625pt>
+File: ./images/gradient-flow/randdisks/randdisks-flow-15.png Graphic file (type
+ png)
+ <use ./images/gradient-flow/randdisks/randdisks-flow-15.png>
+Package pdftex.def Info: ./images/gradient-flow/randdisks/randdisks-flow-15.png
+ used on input line 381.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/randdisks/randdisks-flow-20.png, id=620, 255.95625pt x 
+255.95625pt>
+File: ./images/gradient-flow/randdisks/randdisks-flow-20.png Graphic file (type
+ png)
+ <use ./images/gradient-flow/randdisks/randdisks-flow-20.png>
+Package pdftex.def Info: ./images/gradient-flow/randdisks/randdisks-flow-20.png
+ used on input line 382.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/hibiscus/hibiscus-flow-0.png, id=621, 255.95625pt x 255
+.95625pt>
+File: ./images/gradient-flow/hibiscus/hibiscus-flow-0.png Graphic file (type pn
+g)
+ <use ./images/gradient-flow/hibiscus/hibiscus-flow-0.png>
+Package pdftex.def Info: ./images/gradient-flow/hibiscus/hibiscus-flow-0.png us
+ed on input line 383.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/hibiscus/hibiscus-flow-2.png, id=622, 255.95625pt x 255
+.95625pt>
+File: ./images/gradient-flow/hibiscus/hibiscus-flow-2.png Graphic file (type pn
+g)
+ <use ./images/gradient-flow/hibiscus/hibiscus-flow-2.png>
+Package pdftex.def Info: ./images/gradient-flow/hibiscus/hibiscus-flow-2.png us
+ed on input line 384.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/hibiscus/hibiscus-flow-5.png, id=623, 255.95625pt x 255
+.95625pt>
+File: ./images/gradient-flow/hibiscus/hibiscus-flow-5.png Graphic file (type pn
+g)
+ <use ./images/gradient-flow/hibiscus/hibiscus-flow-5.png>
+Package pdftex.def Info: ./images/gradient-flow/hibiscus/hibiscus-flow-5.png us
+ed on input line 385.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/hibiscus/hibiscus-flow-10.png, id=624, 255.95625pt x 25
+5.95625pt>
+File: ./images/gradient-flow/hibiscus/hibiscus-flow-10.png Graphic file (type p
+ng)
+ <use ./images/gradient-flow/hibiscus/hibiscus-flow-10.png>
+Package pdftex.def Info: ./images/gradient-flow/hibiscus/hibiscus-flow-10.png u
+sed on input line 386.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/hibiscus/hibiscus-flow-15.png, id=625, 255.95625pt x 25
+5.95625pt>
+File: ./images/gradient-flow/hibiscus/hibiscus-flow-15.png Graphic file (type p
+ng)
+ <use ./images/gradient-flow/hibiscus/hibiscus-flow-15.png>
+Package pdftex.def Info: ./images/gradient-flow/hibiscus/hibiscus-flow-15.png u
+sed on input line 387.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+
+<./images/gradient-flow/hibiscus/hibiscus-flow-20.png, id=626, 255.95625pt x 25
+5.95625pt>
+File: ./images/gradient-flow/hibiscus/hibiscus-flow-20.png Graphic file (type p
+ng)
+ <use ./images/gradient-flow/hibiscus/hibiscus-flow-20.png>
+Package pdftex.def Info: ./images/gradient-flow/hibiscus/hibiscus-flow-20.png u
+sed on input line 388.
+(pdftex.def)             Requested size: 59.26274pt x 59.26315pt.
+)
+(./sections/sec-conclusion.tex [20 <./images/gradient-flow/randdisks/randdisks-
+flow-0.png (PNG copy)> <./images/gradient-flow/randdisks/randdisks-flow-2.png (
+PNG copy)> <./images/gradient-flow/randdisks/randdisks-flow-5.png (PNG copy)> <
+./images/gradient-flow/randdisks/randdisks-flow-10.png (PNG copy)> <./images/gr
+adient-flow/randdisks/randdisks-flow-15.png (PNG copy)> <./images/gradient-flow
+/randdisks/randdisks-flow-20.png (PNG copy)> <./images/gradient-flow/hibiscus/h
+ibiscus-flow-0.png (PNG copy)> <./images/gradient-flow/hibiscus/hibiscus-flow-2
+.png (PNG copy)> <./images/gradient-flow/hibiscus/hibiscus-flow-5.png (PNG copy
+)> <./images/gradient-flow/hibiscus/hibiscus-flow-10.png (PNG copy)> <./images/
+gradient-flow/hibiscus/hibiscus-flow-15.png (PNG copy)> <./images/gradient-flow
+/hibiscus/hibiscus-flow-20.png (PNG copy)>]) (./sections/sec-appendix.tex
+[21]) (./WassersteinDual.bbl [22])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
+ [23]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
+ (./WassersteinDual.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
+Package rerunfilecheck Info: File `WassersteinDual.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
+ ) 
+Here is how much of TeX's memory you used:
+ 9294 strings out of 493014
+ 160418 string characters out of 6133351
+ 232134 words of memory out of 5000000
+ 12459 multiletter control sequences out of 15000+600000
+ 13042 words of font info for 54 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 42i,14n,42p,1455b,578s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2016/texmf-dist/font
+s/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2016/texmf-dist/fon
+ts/type1/public/doublestroke/dsrom8.pfb></usr/local/texlive/2016/texmf-dist/fon
+ts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/2016/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on WassersteinDual.pdf (23 pages, 2112121 bytes).
+PDF statistics:
+ 777 PDF objects out of 1000 (max. 8388607)
+ 547 compressed objects within 6 object streams
+ 144 named destinations out of 1000 (max. 500000)
+ 736 words of extra memory for PDF output out of 10000 (max. 10000000)
+

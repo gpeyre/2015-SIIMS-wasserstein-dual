@@ -1,0 +1,61 @@
+% !TEX root = ../WassersteinDual.tex
+
+\section{Introduction}
+
+% Optimal transport is a well established research subject at the interplay between mathematical analysis and probability~\cite{Villani03}. Optimal transport provides a rich set of tools to define a geometry for probability measures supported on a set which is itself a metric space, among which the family of Wasserstein distances (\emph{a.k.a} earth mover's distances,~\citealt{RubTomGui00}). The goal of the present work is to define tractable optimization schemes to deal with \emph{convex variational problems} involving transportation distances, the most representative of them being the computation of the barycenter of a set of histograms under the Wasserstein metric.
+
+% Histograms are fundamental objects popularly used in machine learning to represent complex objects as frequency vectors in the probability simplex. By defining first a set of relevant features, one can then form for each object a normalized histogram that keeps track of the frequencies of each of these features---\eg\, bags-of-words for text \cite{salton1975vector}, bags-of-visual-words for images \cite{Lowe1999,oliva2001modeling}. 
+
+To compare two histograms in the probability simplex, information divergences---the Hellinger and $\chi_2$ distances, the Kullback-Leibler and Jensen-Shannon divergences---have the advantages of being simple and fast to compute. Optimal transport distances~\cite[\S7]{villani09}---\emph{a.k.a.} Wasserstein or earth mover's distances~\cite{RubTomGui00}---require more computational effort but are more versatile: by incorporating in their definition a metric between the bins of these histograms, they can compare sparse histograms even if their support do not overlap significantly, which can be crucial when their dimension is large. Their versatility comes, however, at a price: computing optimal transport distances requires solving a costly network flow problem, whose cost scales super-cubicly with the dimension of the considered histograms. That cost becomes even more of a drawback if one attempts to study a family of histograms using the optimal transport geometry.
+
+Despite this computational complexity, optimal transport is becoming increasingly popular in imaging sciences and related fields, such as for instance image retrieval~\cite{RubTomGui00,Pele-iccv2009}, image interpolation~\cite{Bonneel-displacement}, computational geometry~\cite{Merigot2011,Levy3d}, color image processing~\cite{2013-Bonneel-barycenter,2014-xia-siims}, image registration~\cite{MassGenTransport} and machine learning~\cite{cuturi2013sinkhorn}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Variational Wasserstein Problems} 
+
+ Many learning tasks on histograms, such as averaging or clustering them, can be framed as variational problems that involve distances between pairs of histograms. These problems are easily solved when such divergences are Bregman divergences~\cite{lee1999learning,banerjee2005clustering,JeffreysCentroid-2013}, but they are far more challenging when considering instead Wasserstein distances. \cite{Carlier_wasserstein_barycenter} studied the first problem of this type, the Wasserstein barycenter problem (WBP), and showed that it is related to the multi-marginal optimal transport problem. More recently,~\cite{Solomon-ICML} proposed the Wasserstein propagation-on-graphs framework and showed that it involves a very large linear program, which can only be feasibly solved for small dimensions and families of histograms. Variational problems that involve Wasserstein distances have, however, the potential to impact a very wide range of applications. Beyond their applicability to unsupervised learning problems and their ramifications into clustering mentioned in \cite{cuturi2014fast}, they have found usage in statistics to develop population estimators~\cite{BigotBarycenter}, computer graphics to perform image modification~\cite{2014-xia-siims,2013-Bonneel-barycenter,2015-solomon-siggraph} and computer vision~\cite{ZenICPR14} to summarize complex visual signals. 
+
+Beside the computation of barycenters, it is also possible to integrate Wasserstein distances into more general variational problems. 
+%
+For instance, optimal transport distances are used as a data fidelity to perform image denoising~\cite{Burger-JKO,Lorentz}, image segmentation~\cite{RabinPapadakisSSVM,SchnorSegmentation,SchmitzerSegmentation}, and Radon transform reconstruction~\cite{AbrahamRadon,DBLP:journals/siamsc/BenamouCCNP15}.
+
+Our aim in this paper is to propose a computational framework that is both scalable and flexible enough to minimize energies that involve not only Wasserstein distances, but also more general functions such as regularization terms. To do so, we exploit regularization, Legendre duality and the usual toolbox of convex optimization.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Previous Works} 
+
+\cite{cuturi2014fast} proposes to leverage the entropic regularization of Wasserstein distances introduced by \cite{cuturi2013sinkhorn} to study the WBP. Their formulation requires, however, to run a numerical subroutine, the Sinkhorn fixed-point iteration, to evaluate these objectives and compute their gradients. On the other hand, \cite{Carlier-NumericsBarycenters} show that the Fenchel-Legendre dual of the Wasserstein distance as well as its subgradients can be obtained in \emph{closed form} using nearest-neighbor assignments, that is without having to solve a single optimal transport problem. The authors do, however, struggle with non-differentiable objective functions and use a L-BFGS first order scheme. More recently, \cite{DBLP:journals/siamsc/BenamouCCNP15} have proposed an a generalized version of Sinkhorn's algorithm to compute barycenters based on Bregman's projections. This approach is useful for the barycenter problem, but cannot be easily adapted to solve more advanced variational problems. 
+
+A typical use of such more involved variational problems is the approximation of gradient flows. As initially shown by~\cite{jordan1998variational}, it is indeed possible to approximate solutions of a large family of partial differential equations by iteratively minimizing some energy functional plus the Wasserstein distance to the previous iterates. We refer to Section~\ref{sec-grad-flows} for more details and references about these schemes. Following the method introduced in~\cite{Peyre-JKO}, one can approximate these iterations using entropic regularization. Our dual approach is crucial to be able to tackle non-separable energies, such as for instance the total variation of images.
+
+Another illustration of the usefulness of our dual approach is the application to image segmentation developed in~\cite{RabinPapadakisSSVM}. Note that this application requires to compute the gradient of the dual of the smoothed Wasserstein distance with respect to two histograms. This formula is provided in Appendix~\ref{sub:two}. 
+
+
+% \todo{Explain limits by adding reference to Entropic Wasserstein Gradient Flows? we should definitely add that reference}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Contributions}
+
+Our main contribution is to combine the strengths of the dual formulation of~\cite{Carlier-NumericsBarycenters} with the smoothing strategy laid out by~\cite{cuturi2014fast} to obtain a \emph{smooth} optimization problem whose objectives and derivatives can be computed in \emph{closed form} in \S\ref{sec:optimtransentrop}. We show that this approach can be readily used to compute Wasserstein barycenters in \S\ref{sec:dualalgo}, and explain why using regularized Wasserstein distances might be beneficial to recover smooth solutions. 
+We proceed with more general energies that involve not only Wasserstein distances, but also more generally spatial regularization of barycenters and gradient flows, in \S\ref{sec:exten}. 
+
+The source code to reproduce the numerical illustration of this article can be found online\footnote{\url{https://github.com/gpeyre/2015-SIIMS-wasserstein-dual/}}.
+
+
+%  and learn dictionaries from histogram data with the Wasserstein metric as a fitting criterion in \S\ref{sec:nmf}.
+
+
+
+%\item Third, we show in Sections~\ref{sec:exten} that this approach is versatile and can serve as a blueprint to solve more advanced Wasserstein variational problem, such as Wasserstein propagation, as well as penalized or constrained barycenter problems. We provide a testing ground for these ideas by studying in depth the problem of averaging \emph{unnormalized measures} under a suitable extension of the Wasserstein metric. Indeed, in some application fields, the ability to take into account not only the distribution of various measures, but also their relative mass, can be crucial. We propose an algorithmic answer to this problem and illustrate it by addressing the hard problem of averaging brain activation maps defined on the folded triangulated cortex, \ie producing a mean brain activation in a group of subjects. We present results both on realistic simulations as well as on publicly available magneto-encephalography (MEG) data.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Notations}
+
+When used on matrices, functions such as $\log$ or $\exp$ are always applied element-wise. For two matrices (or vectors) $A,B$ of the same size, $A\circ B$ (resp. $A/B$) stands for the element-wise product (resp. division) of $A$ by $B$. If $u$ is a vector, $\diag(u)$ is the diagonal matrix with diagonal $u$. $\ones_{\n} \in \RR^{\n}$ is the (column) vector of ones.
+
+
+
+

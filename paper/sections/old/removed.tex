@@ -1,0 +1,44 @@
+
+
+%% I PUT HERE STUFF REMOVED %%%
+\if 0
+\subsection{Constrained Newton Algorithm}
+
+To obtain faster quadratic convergence, one can make use of the second order information through a constrained Newton update step
+\eq{
+	( \IIT{g_{k}} )_{k} = \uargmin{ (g_k)_k } 
+	\sum_{k}  \la_k \pa{ \dotp{ \IT{v_k} }{ g_k }
+			+ \frac{1}{2} \dotp{ \IT{H_k} g_k }{ g_k }  }
+		\qstq \sum_k \la_k g_k = 0.			
+}
+where $\IT{v_k} = \nabla H_{q_k}^*( \IT{g_k} )$ and $\IT{H_k} = \partial^2 H_{q_k}^*( \IT{g_k} )$. This update thus requires the resolution of the following symmetric linear system in $(g_k)_k$ and the additional Lagrange multiplier variable $h \in \RR^q$
+\eq{
+	\foralls k \in K, \quad \IT{H_k} g_k + h = -\IT{v_k}, 
+	\qandq
+	\sum_k \la_k g_k = 0.
+}
+In practice, one performs a truncated Newton iteration by perform a few conjugate gradient steps. The computation of $\IT{v_k}$ and the application of $\IT{H_k}$ to a vector are carried over by performing soft nearest neighbors assignments as defined by formula~\eqref{eq-gradient-dual}. The number of conjugate gradient step can be monitored to ensure a sufficient decay of the primal energy. 
+
+%%%
+\subsection{[tentative idea] Parameterized Barycenters}
+
+We seek here a barycenter which a (linear) combination of a few atoms $(p_i)_{i \in I}$ where $p_i \in \Si_n$, and thus consider
+\eq{
+	\foralls u \in \RR^I, \quad P(u) = \sum_{i in I} u_i p_i.
+}
+We assume here that $P$ is injective, i.e. the atoms forms a basis of $\Im(P)$. Writing $p=P(u)$ in~\eqref{eq-variational-barycenter-discrete} leads to consider the strictly convex program
+\eq{
+   \umin{u \in \Si_I} \sum_k \lambda_k W( P(u), q_k ).
+}
+Problem: how to compute $(H_q \circ P)^*$ as a function of $H_q^*$ ? Not trivial because $P$ is nos surjective. 
+
+
+%%%
+\subsection{[tentative] Generic Framework }
+
+We consider problem of the form
+\eql{\label{eq-optim-generic}
+	\umin{u \in \Si_I} \phi\pa{ ( W(P(u),q_k) )_{k=1}^K }
+}
+where $\phi : \RR^K \rightarrow \RR$ is convex and increasing in each of its argument, so that~\eqref{eq-optim-generic} is a convex problem.
+\fi

@@ -1,0 +1,20 @@
+In order to enforce additional properties of the barycenters, it is possible to penalize~\eqref{eq-variational-barycenter-discrete} with an additional convex regularization $J$, which reads
+\eql{\label{eq-bary-penalized}
+	\umin{\p \in \Si_d} \sum_{k=1}^K \la_k  H_{q_k}(\p) + J(\p).
+}
+The following proposition, whose proof is similar as the one of Theorem~\ref{prop-dual-energy} provides an explicit formulation of the dual of that program:
+
+\begin{proposition}
+	The solution $p^\star$ solving~\eqref{eq-bary-penalized} satisfies~\eqref{eq-primal-dual-relationship} where $( g_k^\star )_k$ are any solution of the following dual problem
+	\eql{\label{eq-dual-penalized}
+		\umin{ g_1,\ldots, g_K} \sum_{k} \la_k H_{\q_k}^*(g_k)
+			+ J^*\bpa{ \sum_k \la_k g_k }
+	}
+\end{proposition}
+
+When $J=0$, that is no regularizer on $\p$ is added, one obtains $J^* = \iota_{\{0\}}$, which is equivalent to the original formulation in Eq.~\eqref{eq-dual-pbm}. Relevant examples of penalizations $J$ include:
+\begin{itemize}
+	\item In order to enforce some spread of the barycenter, one can use $J(p) = \frac{\ga}{2}\norm{p}^2$, in which case $J^*(g) = \frac{1}{2\ga}\norm{g}^2$. In contrast to~\eqref{eq-dual-pbm}, the dual problem~\eqref{eq-dual-penalized} is now an unconstraint smooth optimization. This problem can be solved using a simple Newton descent.  
+	\item One can also enforce that the barycenter entries are smaller than some maximum value $\rho$ by setting $J = \iota_{\Cc}$ where $\Cc = \enscond{p}{\normi{p} \leq \rho}$. In this case, one has $J^*(g) = \rho \norm{g}_1$. The optimization~\eqref{eq-dual-penalized} is now an unconstrained non-smooth optimization. Since the penalization is an $\ell^1$ norm, one solve it using first order proximal methods. %\todo{see how to detail this, if needed}.  
+	\item To force the barycenter to assume some fixed values $p_I^0 \in \RR^{|I|}$ on a given set $I$ of indices, one can use $J=\iota_{\Cc}$ where $\Cc = \enscond{p}{p_I = p_I^0}$ where $p_I=(p_i)_{i \in I}$. One then has $J^*(g) = \dotp{g_I}{p_I^0} + \iota_{\{0\}}(g_{I^c})$ %\todo{check this}.
+\end{itemize}

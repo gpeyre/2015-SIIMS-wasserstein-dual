@@ -1,0 +1,156 @@
+% !TEX root = ../WassersteinDual.tex
+
+\section{Smooth Dual Algorithms For the Wasserstein Barycenter Problem}\label{sec:dualalgo}
+
+In this section, we use the properties of the Legendre transform of the Wasserstein distance as detailed in Section~\S\ref{sec:optimtransentrop} to solve the Wasserstein Barycenter Problem.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Smooth Dual Formulation of the WBP}
+
+Following the introduction of the Wasserstein Barycenter Problem (WBP) by~\cite{Carlier_wasserstein_barycenter},~\cite{cuturi2014fast} introduced the smoothed WBP with $\ga$-entropic regularization ($\ga$-sWBP) as
+\eql{\label{eq-variational-barycenter-discrete}
+	\umin{p \in \Si_n}
+		\sum_{k=1}^N \la_k  H_{\q_k}(\p) \enspace .
+}
+where $(\q_1,\ldots,\q_N)$ is a family of histograms in $\Si_n$. When $\ga=0$, the $\ga$-sWBP is exactly the WBP. In that case, problem \eqref{eq-variational-barycenter-discrete} is in fact a linear program, as discussed later in \S\ref{sec:wassbarprob}. When $\ga>0$ the $\ga$-sWBP is a \emph{strictly} convex optimization problem that admits a unique solution, which can be solved with a simple gradient descent as advocated by \cite{cuturi2014fast}. They show that the $N$ gradients $\left[\nabla H_{\q_k}(\p) \right]_{k \leq \N}$ can be computed at each iteration by solving $\N$ Sinkhorn matrix-scaling problems. Because these gradients are themselves the result of a numerical optimization procedure, the problem of choosing an adequate threshold to obtain sufficiently precise gradients arises as a key parameter in that approach.
+%
+We take here a different route to solve the $\ga$-sWBP, which can be either interpreted as a smooth alternative to the dual WBP studied by~\cite{Carlier-NumericsBarycenters}, or the dual counterpart to the smoothed WBP of \cite{cuturi2014fast}.
+
+\begin{theorem}\label{prop-dual-energy}
+	The barycenter $p^\star$ solving~\eqref{eq-variational-barycenter-discrete} satisfies 
+	\eql{\label{eq-primal-dual-relationship}
+		\foralls k = 1,\ldots,\N, \quad 
+		p^\star = \nabla H_{\q_k}^*(g_k^\star)
+	}
+	where $( g_k^\star )_k$ are any solution of the smoothed dual WBP:
+	\eql{\label{eq-dual-pbm}
+		\umin{ g_1,\ldots, g_N\in\RR^n} \sum_k \la_k H_{\q_k}^*(g_k)
+		\qstq \sum_k \la_k g_k = 0.
+	}
+\end{theorem}
+
+\begin{proof}
+	We re-write the barycenter problem 
+	$$\umin{\p_1,\ldots,\p_N} \sum_k \la_k H_{\q_k}(\p_k) \qstq \p_1=\ldots=\p_N$$
+	whose Fenchel-Rockafelar dual (see~\cite{rockafellar1996convex}) reads
+		$$\umin{\tilde g_1,\ldots,\tilde g_N} \sum_k \la_k H_{\q_k}^*(\tilde g_k/\la_k) 
+		\qstq \sum_k \tilde g_k = 0.$$
+	Since the primal problem is strictly convex, the primal-dual relationships show that the unique solution $p^\star$ of the primal can be obtained from any solution $(g_k^\star)_k$ via the relation
+	$\p_k^\star = \nabla H_{\q_k^\star}^*(\tilde g_k^\star/\la_k)$.
+	One obtains the desired formulation using the change of variable $g_k = \tilde g_k/\la_k$.
+\end{proof}
+
+Theorem~\ref{prop-dual-energy} provides a simple approach to solve the $\ga$-sWBP: Rather than minimizing directly the sum of regularized Wasserstein distances in Eq. \eqref{eq-variational-barycenter-discrete}, this formulation only involves minimizing a strictly convex function with closed form objectives and gradients. 
+
+\paragraph{Parallel Implementation} The objectives, gradients and Hessians of the Fenchel-Legendre dual $H^*_q$ can be computed using either matrix-vector products or element-wise operations. Given $N$ histograms $(q_k)_k$, $N$ dual variables $(g_k)_k$ and $N$ arbitrary vectors $(x_k)_k$, the computation of $N$ objective values $(H_{q_k}^*(g_k))_k$ and $N$ gradients $(\nabla H_{q_k}^*(g_k))_k$ can all be vectorized. Assuming that all column vectors $g_k$, $q_k$ and $x_k$ are gathered in $n\times N$ matrices $G$, $Q$ and $X$ respectively, we define first the following $n\times N$ auxiliary matrices:
+$$ A\defeq e^{G/\ga}, \quad B\defeq K A, \quad C\defeq \frac{Q}{B} , \quad  \Delta\defeq A\circ (KC),$$
+to form the vector of objectives
+$$\label{eq:onehistoobj}H^*\; \defeq [ H_{q_1}^*(g_1),\dots, H_{q_N}^*(g_N)]= -\ga \ones_n^T \left(Q \circ \log(C)\right),$$
+and the matrix of gradients 
+\begin{equation}\label{eq:onehistograd}\nabla H^*\; \defeq [\nabla H_{q_1}^*(g_1),\dots,\nabla H_{q_N}^*(g_N)]=\Delta.\end{equation}
+% \begin{equation}\label{eq:onehistohessian}\begin{aligned}\nabla^2 H^* X \; &\defeq \left[ \nabla^2 H_{q_1}^*(g_1) x_1,\dots, \nabla^2 H_{q_N}^*(g_N) x_N\right] \\&=\frac{1}{\gamma} \left[\Delta\circ X - A \circ \left(K  \left(\frac{Q\circ \left(K \left(A\circ X\right)\right)}{B\circ B} \right)\right) \right].\end{aligned}\end{equation}
+%\begin{equation}\label{eq:onehistohessian}\begin{aligned}\nabla^2 H^* X =\frac{1}{\gamma} \left[\Delta\!\circ\! X - A\!\circ\! \left(K  \left(\frac{Q\!\circ\!\left(K\left(A\!\circ\!X\right)\right)}{B\circ B} \right)\right) \right].\end{aligned}\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% 
+% \subsection{Parallel Computations, Two Histograms} 
+% 
+% We precompute the denominators appearing in Eq.~\eqref{eq:xgh} for all pairs $(g_k,h_k)_{k\leq N}$ using a $n\times n$ matrix times $n\times N$ matrix of variables, a Schur product and a simple matrix vector product: 
+% $$U=\ones_n^T \left(e^{G/\ga}\circ (Ke^{H/\ga})\right).$$
+% $U$ is therefore a $1 \times N$ row vector.
+% The $2n\times N$ matrix of gradients is then obtained as
+% $$\nabla W^*\;\defeq [\nabla W^*(g_1,h_1),\dots,\nabla W^*(g_N,h_N)]= \begin{bmatrix}e^{G/\ga} \circ (K e^{H/\ga}) \\ e^{H/\ga} \circ (\K  e^{G/\ga})\end{bmatrix}\circ \left(\ones_{2n} 1/U \right),$$
+% where the product by a diagonal matrix above should be implemented in practice using a fast subroutine such as \texttt{bsxfun} in Matlab, broadcasting with Numpy in Python or any convenient way to scale rows in a matrix.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Algorithm}
+The $\ga$-sWBP in Eq.~\eqref{eq-dual-pbm} has a smooth objective with respect to each of its variables $g_k$, a simple linear equality constraint, and both gradients and Hessians that can computed in closed form. We can thus compute a minimizer for that problem using a naive gradient descent outlined in Algorithm~\ref{algo:firstorder}.
+%
+Note that the iterates $G$ are projected at each iteration on the constraint $G\lambda=0$ (which is equivalent to projecting the gradient direction on this constraint if the initial $G$ satisfies it).
+%
+To obtain a faster convergence, it is also possible to use accelerated gradient descent, quasi-Newton or truncated Newton methods~\cite[\S10]{Boyd:1072}. In the latter case, the resulting KKT linear system is sparse, and solving it with preconjugate gradient techniques can be efficiently carried out. We omit these details and only report results using off-the-shelf L-BFGS. From the dual iterates $g_k$ stored in a $n\times N$ matrix $G$, one recovers primal iterates using the formula~\eqref{eq-primal-dual-relationship}, namely $\p_k = e^{g_k/\ga}\circ K \frac{q_k}{Ke^{g_k/\ga}}.$
+At each intermediary iteration one can thus form a solution to the smoothed Wasserstein barycenter problem by averaging these primal solutions, $\tilde{\p} = \Delta\ones_N/N.$ Upon convergence, these $\p_k$ are all equal to the unique solution $\p^\star$. The average at each iteration $\tilde{\p}$ converges towards that unique solution, and we use the sum of all line wise standard deviations of $\Delta$: $\ones_d^T\sqrt{(\tilde{\Delta}\circ \tilde{\Delta}) \ones_N/N}$ where $\tilde{\Delta}=\Delta(I_N-\frac{1}{N}\ones_N\ones_N^T)$ to monitor that convergence in our algorithms.
+
+\begin{algorithm}
+	\begin{algorithmic}[1]
+		\caption{Smoothed Wasserstein Barycenter, Generic Algorithm\label{algo:firstorder}}
+		\STATE \textbf{Input}: $Q=[\q_1,\cdots,\q_N] \in(\Sigma_n)^N$, metric $M\in\RR_+^{n\times n}$, barycenter weights $\lambda\in\Sigma_N$, $\gamma>0$, tolerance $\varepsilon>0$. 
+		\STATE initialize $G\in\mathbb{R}^{n\times N}$ and form the $n\times n$ matrix $K=e^{-M/\gamma }$.
+		\REPEAT
+				\STATE From gradient matrix $\Delta$ (see Eq.~\ref{eq:onehistograd}) produce update matrix $\hat{\Delta}$ using either $\Delta$ directly or other methods such as L-BFGS.
+				\STATE $G= G - \tau \hat{\Delta}$, update with fixed step length $\tau$ or approximate line search to set $\tau$.
+				\STATE $G = G - \frac{1}{\norm{\lambda}_2^2}(G \lambda)  \lambda^T$ \quad (projection such that $G\lambda=0$)
+		\UNTIL{$\ones_d^T\sqrt{(\tilde{\Delta}\circ \tilde{\Delta}) \ones_N/N}<\varepsilon$, where $\tilde{\Delta}=\Delta(I_N-\frac{1}{N}\ones_N\ones_N^T)$}
+		\STATE output barycenter $\p=\Delta \ones_N/N$.
+	\end{algorithmic}
+\end{algorithm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Initialization Heuristic}
+\label{sec:magictrick}
+
+\def\abstildek{\abs{\kappa}}
+Definition~\ref{def:SI} provides an initialization heuristic to initialize both the primal and dual smoothed WBP, motivated by the fact that they provide directly the optimal primal/dual solutions when the histograms are Dirac histograms as proved in Proposition~\ref{prop:init}.
+
+\begin{definition}[Primal and Dual WBP Initialization]\label{def:SI}
+Let $(q_1,\cdots,q_N)$ be $N$ target histograms in the simplex $\Sigma_n$ and $\lambda$ a vector of weights in $\Sigma_N$. Let  $\bar{q}=\sum_k \lambda_k q_k\in\Sigma_n$. Define $\kappa_\ga$ as
+$$\kappa_\gamma = \begin{cases} e^{-M\bar{q}/\ga}/(\ones_\n^Te^{-M\bar{q}/\ga}) \text{ if } \ga>0,\\  
+\delta_j, \text{ where } j\in\argmin_\ell [M\bar{q}]_\ell, \text{ if } \gamma=0.\end{cases}$$ 
+For $\ga\geq 0$, the $\ga$-smoothed primal and dual WBP can be initialized respectively with the following primal and $N$ dual feasible solutions:
+\begin{equation}\label{eq:sinkprimalinit}
+	\p^{(0)}\defeq \kappa_\ga,
+\end{equation}
+and for $1 \leq k \leq N$,
+\begin{equation}\label{eq:sinkdualinit}
+g_k^{(0)} \defeq M (q_k - \bar{q}).
+\end{equation}
+\end{definition}
+%g_k^{(0)} \defeq = \ga \log \left(\frac{1}{\abstildek}\frac{\kappa}{k_k}\right) + \frac{\ga}{N\lambda_k}\log \left(\abstildek\right) \ones_n.
+
+The primal initialization described above differs when $\ga>0$ or $\ga=0$: For $\ga>0$, $\kappa_\ga$ is the normalized, weighted geometric average of the columns of the kernel $K=e^{-M/\ga}$; when $\ga=0$, $\kappa_\ga$ is a vector of zero values except for a value of $1$ on the index corresponding to the (or any, if many) smallest entry of $M\bar{q}$. On the other hand, the dual initialization is the same for both smoothed and non-smoothed Wasserstein barycenter problems.
+
+The initializations proposed in Definition~\ref{def:SI} solve the WBP in the case that all histograms are Dirac histograms, as proved in Proposition~\ref{prop:init}. For more general problems, we have observed that this initialization is particularly useful when solving the WBP with the dual formulation, but not so much with the primal one. In many experimental problems we have considered, the dual initialization seems to capture important features of the optimal solution. The primal solution that results from this dual initialization, that obtained by averaging the gradients $\nabla H_{\q_k}^*(g_k^\star)$ as suggested by the primal/dual relation of Equation~\eqref{eq-variational-barycenter-discrete}, can serve as a rough approximation of the barycenter. We provide its explicit expression $p^{(0)}_{\text{dual}}$ below. Note that $p^{(0)}_{\text{dual}}$ differs from the initialization $p^{(0)}$ suggested in Equation~\eqref{eq:sinkprimalinit}.
+
+$$p^{(0)}_{\text{dual}} = \frac{1}{n} \left(e^{M(Q-\frac{1}{n}Q\ones_n\ones_N^T)/\ga}\circ \left(K\frac{Q}{Ke^{M(Q-\frac{1}{n}Q\ones_n\ones_N^T)}}\right)\right)\ones_n.$$
+
+\begin{proposition}\label{prop:init} Let $\lambda$ be a vector of weights in $\Sigma_N$, and $(q_1,\cdots,q_N)$ be $N$ Dirac histograms, namely histograms that are zero everywhere but for one coordinate equal to 1. For $\ga\geq 0$, the $\ga$-sWBP primal and dual problems are solved exactly using the initialization of Definition~\eqref{def:SI}.
+\end{proposition}
+
+\begin{proof}	
+To simplify notations, we write $p=p^{(0)}$ and $g_k=g_k^{(0)}$ as defined in Definition~\ref{def:SI} above. First, one can easily check that both initialization satisfy the necessary constraints, \ie~$p\in\Sigma_n$ and $\sum_k \lambda_k g_k=0$.
+
+When $\ga=0$, since all $q_k$ are Dirac histograms, the Wasserstein distance of any point $x$ in the simplex to any $q_k$ is equal to $x^T M q_k$. Therefore, the Wasserstein barycenter objective evaluated at $x$ is equal to $x^T M \bar{q}$. This can be trivially minimized by selecting any histogram giving a mass of $1$ to the index corresponding to any smallest entry in the vector $M \bar{q}$, which is the definition of $p$. A similar computation for the dual problem results in the dual optimal outlined above.
+
+When $\ga>0$, we need to prove that each gradient of $H^*_{\q_k}$ computed at $g_k$ is equal to $p$ for all $1 \leq k \leq \N$. Writing $\alpha_k=e^{g_k/\gamma}$, we recover that 
+$$\alpha_k = \frac{\kappa_\ga}{\xi_k},$$ 
+where $\xi_k\defeq e^{-M q_k/\ga}$. Since $q_k$ is a Dirac histogram, all of its coordinates are equal to $0$, but for one coordinate whose value is $1$. Let $j$ be the index of that coordinate. Therefore, $\xi_k\defeq e^{-M q_k/\ga}=K_j$, where $K_j$ is the $j^{\text{th}}$ column of the matrix $K=e^{-M/\ga}$. Therefore,
+$$\alpha_k = \frac{\kappa_\ga}{K_j}.$$
+Let us now compute the gradient $\nabla_k$ of $H^*_{\q_k}$ at $g_k$ by following  Eq.~\eqref{eq-obj-dual}:
+$$\nabla_k = \alpha_k\circ \left(K \frac{q_k}{K\alpha_k}\right).$$
+Because of the symmetry of $K$, we have that the $j^{\text{th}}$ element of the vector $K\alpha_k$ is equal to:
+$$ (K\alpha_k)_j = K_j^T \alpha_k= \ones_\n^T \left( K_j \circ \alpha_k\right)= \ones_\n^T \left( K_j \circ \left(\frac{\kappa_\ga}{K_j}\right)\right)= 1.$$ 
+Since only the $j^{\text{th}}$ element of $q_k$ is non-zero by definition, $q_k/(K\alpha_k)=q_k$.
+Because $q_k$ is everywhere zero except for its $j^{\text{th}}$ coordinate, $K(q_k/K\alpha_k)$ is thus equal to the $j^\text{th}$ column of $K$, namely 
+$$K\frac{q_k}{K\alpha_k}=K_j.$$
+Finally, we obtain that the gradient of $H^*_{\q_k}$ at $g_k$ is equal to 
+$$\nabla_k = \alpha_k\circ \left(K \frac{q_k}{K\alpha_k}\right)=  \frac{\kappa_\ga}{K_j} \circ K_j =\kappa_\ga=p^{(0)},$$
+which holds for all indices $1\leq k\leq N$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+\section{Dictionary learning with smooth Wasserstein fitting cost}\label{sec:nmf}
+We illustrate in this section the versatility of Theorem~\ref{prop-dual-energy}, and how it can be adapted to carry out dictionary learning with a Wasserstein reconstruction error on a dataset of histograms arranged as a $n\times N$ matrix $Q=[q_1,\cdots,q_N]$.
+
+\paragraph{Problem Formulation}
+The dictionary learning problem with Wasserstein fitting cost consists in learning simultaneously $m$ dictionary elements and $N$ vectors of weights in $\Sigma_m$ to reconstruct each of the original histograms as a linear combination of the dictionary elements, namely find a dictionary $D$ and weights $\Lambda$ such that
+\begin{equation}
+\label{eq:DL} 
+\begin{tabular}{ll}
+$\displaystyle\min_{D\in\mathbb{R}^{n\times m},\Lambda\in\mathbb{R}^{m\times N}}$& $\displaystyle\sum_{k=1}^N H_{q_k}(D\lambda_k)$
+\end{tabular}
+\end{equation}
+with the implicit constraint that $D\Lambda\in\Sigma_n^N$. 
+
+\paragraph{Previous work} This problem was previously considered by \cite{sandler2009} and \cite{zen2014simultaneous}. \cite{sandler2009} rely on a fast approximation of optimal transport that uses Wavelet decompositions \cite{shirdhonkar2008approximate} but which only works in practice when $\Xcal$ is $\RR^2$ or $\RR^3$. \cite{zen2014simultaneous} propose a similar matrix factorization and approach while also learning a cost matrix $M$ (not necessarily a metric) using labels. Their formulation relies on large-scale linear programs (not network flows) whose complexity grows very quickly with the relevant dimensions $m,N$ and $n$ of the problem. Our approach is not restricted to particular choices for $\Xcal$ and can scale to large dimensions/datasets/dictionary sizes: we do make any assumption on the metric space $(\Xcal,D)$ other that the $n^2$ matrix of pairwise distances between the $n$ points in $\Xcal$ can be stored in memory. This versatility is illustrated  in our experiments below, in which we carry out Wasserstein NMF on texts seen as large clouds of points in $\RR^{50}$ using word embeddings~\cite{pennington2014glove,zou2013}.
+
+\paragraph{Dual formulation} Let $D^\star_\Lambda$ (resp. $\Lambda^\star_D$) be the solution of (\ref{eq:DL}) with $\Lambda$ (resp. $D$) fixed. The following theorem links $D^\star_\Lambda$ (resp. $\Lambda^\star_D$) and $\Lambda$ (resp. $D$) when the rank of $\Lambda$ (resp. $D$) is $m$.
+
+\begin{theorem}
+$\Lambda^\star_D$ can be computed as $D\lambda^\star_{Di}=\nabla H^*_{q_k}(g^{\star\Lambda}_i)$ where and $(g^{\star\Lambda}_i)_{i=m}^n$ is the solution of
+\begin{equation*}
+\label{eq:lambdaSubProblems}
+\displaystyle\min_{D^Tg_k=0} H^*_{q_k}(g_k)\,,\quad k=1\cdots N
+\end{equation*}
+Furthermore $D^\star_\Lambda$ can be computed as \\$D^\star_\Lambda=(\nabla H^*_{q_k}(g^{\star D}_i))_{k=1\cdots N}$ where $G^{\star D}$ is the solution of
+\begin{equation*}
+\displaystyle\min_{G\Lambda^T=0} \sum_{k=1}^N H^*_{q_k}(g_k)
+\end{equation*}
+\end{theorem}
+The proof is almost identical to that of \ref{prop-dual-energy} and left out for lack of space.
+
+When $D$ is fixed, $\Lambda^\star_D$ can be computed with Algorithm \ref{algo:firstorder} by replacing the projection step by $G=G-GDD^+$ where $D^+$ is the peudo-inverse of $D$, and the output is $\Lambda^\star_D= D^+\nabla H^*_Q(G)$. Similarily when $\Lambda$ is fixed, $D^\star_\Lambda$ can be computed with Algorithm \ref{algo:firstorder}  by replacing the projection by $G=G-\Lambda^+\Lambda G$, and the output is $D^\star_\Lambda= \nabla H^*_Q(G)\Lambda^+$.
+
+We can minimize Eq.~\eqref{eq:DL} using alternated optimization. Our algorithm gains numerical stability when the columns of $D$ and $\Lambda$ are projected on the simplex (of size $n$ and $m$) at each iteration.
+
+Note that if $D_0^T\mathbf{1}=\mathbf{1}$ and the rank of $\Lambda$ (resp. $D^T$) stays equal to $m$, $D^{\star T}_\Lambda\mathbf{1}=\mathbf{1}$ (resp. $\Lambda^{\star T}_D\mathbf{1}=\mathbf{1}$). 
+
+\paragraph{Experiments on synthetic data}
+In this experiment with toy-data, we consider an input matrix $Q$ using 3 Gaussians centered around $-6$, $0$ and $6$ and with variance $2$, discretized on $[-12, 12]$ with $401$ evenly spaced points. Each column of $Q$ is generated as a weighted sum of those gaussians with a shift on the means. The weights (resp. shifts) are evenly distributed on $[0, 1]$ (resp. $[-2, 2]$) and each resulting vector is normalized so that its coordinates sum to one (examples of such histograms are provided in the top right part of Figure \ref{fig:k3}). We generate $N=1000$ histograms that way. The lower half of Figure \ref{fig:k3} displays dictionary learned under the Wasserstein metric with our approach (smoothing parameter $\gamma=1/50$) and the standard NMF algorithm with multiplicative updates and KL fitting cost~\cite{lee1999learning}. These computations require less than a few minutes on a desktop machine.
+
+\begin{figure}[!h]
+        \centering
+        \includegraphics[width=.235\textwidth]{Synthetic_basis}
+        \includegraphics[width=.235\textwidth]{Synthetic_ex4}
+        \includegraphics[width=.235\textwidth]{Synthetic_WNMF_k3_lambda100}
+        \includegraphics[width=.235\textwidth]{Synthetic_NMF_k3}
+        \caption{(top left) gaussians used to generate the data (top right) 4 examples of histograms generated using random shifts and weights. We use $N=1000$ histograms to learn a dictionary using either: (bottom left) our algorithm with Wasserstein fitting cost with $m=3$ dictionary elements and $\gamma=1/50$; (bottom right) a KL fitting cost with $m=3$.}
+        \label{fig:k3}
+\end{figure}
+
+
+\paragraph{Translingual Topic Modeling}
+We consider the problem of summarizing a set of texts seen as bags-of-words in a given language as a convex combinations of topics (bags-of-words) in a different language. To carry out such a task with optimal transport, we need a metric between words in both languages. This metric can be defined using \cite{zou2013}'s work, which proposes a bilingual embedding of both English and Chinese words in $\Xcal=\RR^{50}$. The Euclidean metric between such embeddings can be used directly to define the cost matrix $M$, with an exponent $\rho=1$. In this setting $n$, the total number of points, is equal to $n_E+n_C$ where $n_E$ (resp. $n_C$) is the size of the English (resp. Chinese) dictionary considered for such texts.
+
+We applied our Wasserstein-NMF method to a all 10788 English texts taken from the reuters corpus. We remove common english stop-words and words that are not in the word embedding dictionary of~\cite{zou2013} to obtain dictionary sizes of $n_E=11978$ English words and $n_C = 4070$ Chinese words. We set $m=6$, $\gamma=\frac{1}{50}$ and we learn dictionary elements with the constraint that they are exclusively supported on the $n_C$ bins that correspond to \textbf{Chinese words}, namely we wish to reconstruct each English text (seen as a bag-of-English-words) using convex combinations of bags-of-Chinese-words. We display the first factor computed by our method in Figure \ref{fig:mandarin} as a cloud-of-words, where each word's size is proportional to its frequency, and only the most frequent words are reported. That topic is dominated by words (single Chinese characters or pairs) related to international trade.
+
+\begin{figure}[!h]
+        \centering
+        \includegraphics[height=.5\textwidth, angle=270]{Mandarin3}
+\caption{Wordle representation of 1 of the 6 mandarin topics learned for $\gamma=1/50$. Only the 50 most frequent words are represented. The font size increases monotonically with the word frequency}\label{fig:mandarin}
+\end{figure}

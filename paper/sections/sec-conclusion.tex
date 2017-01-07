@@ -1,0 +1,28 @@
+% !TEX root = ../WassersteinDual.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Conclusion}
+
+In this paper, we introduced a dual framework for the resolution of certain variational problems involving Wasserstein distances. The key contribution is that the dual functional is smooth and that its gradient can be computed in closed form and involves only multiplications with a Gibbs kernel. 
+%
+We illustrate this approach with applications to several problems revolving around the idea of Wasserstein barycenters. This method is particularly advantageous for the computation of regularized barycenters, since pre-composition by linear operator  (such as discrete gradient on images or graphs) of functionals is simple to handle. 
+% 
+Our numerical findings is that entropic smoothing is crucial to stabilize the computation of barycenters and to obtain fast numerical schemes. 
+%
+Further regularization using for instance a total variation is also beneficial, and can be used in the framework of gradient flows.
+
+
+% one that involves computing Wasserstein barycenters and another that involves learning a dictionary and weights with a Wasserstein fit. Our approach has several attractive qualities: \emph{(i)} our entropic regularization ensures the unicity of the optimal solution in the simple WBP problem and facilitates the computation of each of the convex sub-problems considered in dictionary learning; \emph{(ii)} we observe that solutions obtained with this regularization exhibit a level of smoothness which is comparable to that of the original measures. This property can be desirable in some cases. \emph{(iii)} our approach can be initialized very efficiently thanks to a simple rule that is optimal in the simplified case where all original measures are dirac masses. \emph{(iv)} using Fenchel duality, we show that Wasserstein variational problems can be carried out using closed form functions. We believe this class of approaches can be extended to more general tasks and can scale up to more demanding learning problems.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Acknowledgments}
+
+The work of Gabriel Peyr\'e has been supported by the European Research Council (ERC project SIGMA-Vision).
+%
+Marco Cuturi gratefully acknowledges the support of JSPS young researcher A grant 26700002.
+%
+We would like to thank Antoine Rolet, Nicolas Papadakis and Julien Rabin for stimulating discussions. 
+%
+We would like to thank Valentina Borghesani, Manuela Piazza et Marco Buiatti for giving us access to the MEG data.
+% 
+We would like to thank Fabian Pedregosa and the chaire ``\'Economie des Nouvelles Donn\'ees'' for the help in the preparation of the MEG data.

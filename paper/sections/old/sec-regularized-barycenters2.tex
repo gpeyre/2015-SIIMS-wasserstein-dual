@@ -1,0 +1,401 @@
+% !TEX root = ../WassersteinDual.tex
+
+%%%%%%%%%%%%%%%%
+\section{Regularized Problems}
+\label{sec:exten}
+
+We show in this section that our dual optimization framework is versatile enough to deal with functionals involving Wasserstein distances that are more general than the initial WBP problem.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Regularized Wasserstein Barycenters}\label{sec:regularized}
+
+In order to enforce additional properties of the barycenters, it is possible to penalize~\eqref{eq-variational-barycenter-discrete} with an additional convex regularization, and consider
+\eql{\label{eq-regul-primal}
+	\umin{p} \sum_{k=1}^N w_k H_{q_k}(p) + J(\Aa p),
+}
+where $J$ is a convex real-valued function, and $\Aa$ is a linear operator.
+
+The following proposition shows how to compute such a regularized barycenter through a dual optimization problem. 
+
+\begin{prop}
+The dual problem to~\eqref{eq-regul-primal} reads
+\eql{\label{eq-regul-dual}
+	\umin{(u_k)_{k=1}^N, v} \sum_{k=1}^N w_i H_{q_k}^*(u_k) + J^*(v) + \iota_{H}(v,(u_k)_k)
+}
+\eq{
+	\qwhereq
+	H \eqdef \enscond{ ((u_k)_{k=1}^N, v) }{ \Aa^* v + \sum_k w_k u_k = 0 },
+}
+and the primal-dual relationships read
+\eql{\label{eq-primal-dual}
+	\foralls k=1,\ldots,N, \quad p = \nabla H_{q_k}^*(u_k). 
+}
+\end{prop}
+
+\begin{proof}
+	We re-write the initial program~\eqref{eq-regul-primal} as 
+	\eql{\label{eq-primal-reformulated}
+		\umin{\pi} F( B\pi ) + G(\pi)
+	} 
+	where we denoted, for $\pi=(p,p_1,\ldots,p_N)$, 
+	\begin{align*}
+			B \pi &\eqdef (\Aa p, p, p_1,\ldots,p_N) \\
+			F(\beta,q, p_1,\ldots,p_N) &\eqdef J(\beta) + \iota_{C}(q,p_1,\ldots,p_N),\\
+			G(p, p_1,\ldots,p_N) &\eqdef \sum_k w_k H_{q_k}(p_k)
+	\end{align*} 
+	for $C \eqdef \enscond{(q,p_1,\ldots,p_N)}{\forall k, p_k=q}$.
+	%
+	The Fenchel-Rockafelear dual to~\eqref{eq-primal-reformulated} reads
+	\eq{
+		\umax{\nu = \{v,u,(u_k)_k\}} - F^*(\nu) - G^*(-B^* \nu) 
+	}
+	where 
+	\begin{align*}
+		G^*(u,u_1,\ldots,u_N) &= \sum_k w_k H_{q_k}^*(u_k/w_k) + \iota_{\{0\}}( u ),  \\
+		B^*(\nu) &= (\Aa^* v + u, u_1,\ldots,u_N), \\
+		F^*(\nu) &= J^*(v) + \iota_{C^\bot}(u,u_1,\ldots,u_N), 
+	\end{align*} 
+	where $C^\bot = \enscond{ (u,u_1,\ldots,u_N) }{u + \sum_k u_k=0}$. 
+	One thus obtains the dual
+	\eq{
+		\umin{ v,b,(u_k)_k } \sum_k w_k H_{q_k}^*(-u_k/w_k)
+		\qstq
+		\choice{
+				\Aa^* v + u = 0, \\
+				u + \sum_k u_k=0.
+		}
+	}	
+	The primal-dual relationships reads $\pi \in \partial G^*(-B^* \nu)$, and hence~\eqref{eq-primal-dual}. 
+	Changing $-u_k/w_k$ into $u_k$ give the desired formula. 
+\end{proof}
+
+Relevant examples of penalizations $J$ include:
+\begin{itemize}
+	\item In order to enforce some spread of the barycenter, one can use $\Aa=\Id$ and $J(p) = \frac{\la}{2}\norm{p}^2$, in which case $J^*(g) = \frac{1}{2 \la}\norm{g}^2$. In contrast to~\eqref{eq-dual-pbm}, the dual problem~\eqref{eq-regul-dual} is equivalent to an unconstraint smooth optimization. This problem can be solved using a simple Newton descent.  
+	\item One can also enforce that the barycenter entries are smaller than some maximum value $\rho$ by setting $\Aa=\Id$ and $J = \iota_{\Cc}$ where $\Cc = \enscond{p}{\normi{p} \leq \rho}$. In this case, one has $J^*(g) = \rho \norm{g}_1$. The optimization~\eqref{eq-regul-dual} is equivalent an unconstrained non-smooth optimization. Since the penalization is an $\ell^1$ norm, one solve it using first order proximal methods as detailed in Section~\ref{sec-first-order-split} bellow.
+	\item To force the barycenter to assume some fixed values $p_I^0 \in \RR^{|I|}$ on a given set $I$ of indices, one can use $\Aa=\Id$ and $J=\iota_{\Cc}$ where $\Cc = \enscond{p}{p_I = p_I^0}$ where $p_I=(p_i)_{i \in I}$. One then has $J^*(g) = \dotp{g_I}{p_I^0} + \iota_{\{0\}}(g_{I^c})$.
+	\item To force the barycenter to have some smoothness, one can select $\Aa$ to be a spacial derivative operator (for instance a gradient approximated on some grid or mesh) and $J$ to be a norm such as an $\ell^2$ norm (to ensure uniform smoothness) or an $\ell^1$ norm (to ensure piecewise regularity). We explore this idea in Section~\ref{sec-tv-regul}.  
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Resolution using First Order Proximal Splitting}
+\label{sec-first-order-split}
+
+Assuming without loss of generality that $w_N \neq 0$ (otherwise one simply needs to permute the ordering of the input densities), one can note that it is possible to remove $u_K$ from~\eqref{eq-regul-dual} by imposing, for $x = ((u_k)_{k=1}^{N-1}, v)$
+\eq{
+	u_N(x) \eqdef - \frac{\Aa^*v}{w_N} - \sum_{i=1}^{N-1} \frac{w_k}{w_N}  u_k, 
+} 
+and then one can consider the following optimization problem without the $H$ constraint
+\eql{\label{eq-primal-unconstr}
+	\umin{x} F(x) + G(x)
+	\qwhereq
+	\choice{
+	F(x) \eqdef \sum_{k=1}^{N-1} w_i H_{q_k}^*(u_k) 
+		+ w_N H_{q_N}^*\pa{  u_N(x) } \\
+	G(x) \eqdef J^*(v).
+	}
+}
+
+We assume that one is able to compute the proximal operator of $J^*$
+\eql{\label{eq-proximal-map}
+	\Prox_{\tau J^*}(v) = \uargmin{v'} \frac{1}{2}\norm{v-v'}^2 + \tau J^*(v').
+}
+It is for instance an orthogonal projector on a convex set $C$ when $J^*=\iota_{C}$ is the indicator of $C$. 
+%
+One can compute easily this projection for instance when $J$ is the $\ell^2$ or the $\ell^1$ norm (see Section~\ref{sec-tv-regul}). 
+%
+We refer to~\cite{BauschkeCombettes11} for more background on proximal operators. 
+
+
+The proximal operator of $G$ is then simply
+\eq{
+	\foralls x=((u_k)_{k=1}^{N-1}, v), \quad \Prox_{\tau G}(x) = ( (u_k)_{k=1}^{N-1}, \Prox_{\tau J^*}(v) ). 
+}
+Note also that the function $F$ is smooth with a Lipschitz gradient, and that
+\eq{
+	\nabla F( (u_k)_{k=1}^{N-1}, v ) = 
+	\pa{  
+		(
+			w_k ( \nabla H_{q_k}^*(u_k) 
+			-
+			\nabla H_{q_N}^*(u_N)  )
+		)_{k=1}^{N-1}, 		
+		-\Aa \nabla H_{q_N}^*(u_N)
+	}
+}
+
+The simplest algorithm to solve~\eqref{eq-primal-unconstr} is the Forward-Backward algorithm, whose iteration read
+\eql{\label{eq-algo-fb}
+	\IIT{x} = \Prox_{\tau J^*}\pa{ \IT{x} - \tau \nabla F(\IT{x}) }.
+}
+It $\tau<2/L$ where $L$ is the Lipschitz constant of $\nabla F$, then $\IT{x}$ converge to a solution of~\eqref{eq-primal-unconstr}, see~\cite{BauschkeCombettes11} and the references therein. In order to accelerate the convergence of the method, one can use accelerated schemes such as FISTA's algorithm~\cite{beck-fista}. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Total Variation Regularization}
+\label{sec-tv-regul}
+
+A typical example of regularization to enforce some geometrical regularity in the barycenter is the total variation regularization on a grid in $\RR^d$ (e.g. $d=2$ for images). It is obtained by considering
+\eql{\label{eq-exmp-tv}
+	\Aa p \eqdef \nabla p = ( \nabla_i p )_i
+	\qandq
+	J(u) \eqdef \la \sum_i \norm{u_i}_{\beta}, 
+}
+where $\nabla_i p \in \RR^d$ is a finite difference approximation of the gradient at a point indexed by $i$, and $\la \geq 0$ is the regularization strength.
+%
+When using the $\ell^2$ norm to measure the gradient amplitude, i.e. $\beta=2$, one obtains the so-called isotropic total variation, that tends to round corners, and essentially penalizes the length of the level sets of the barycenter, possibly merging clusters together. 
+%
+When using instead the $\ell^1$ norm, i.e. $\beta=1$, one obtains the so-called anisotropic total variation, which penalizes independently horizontal and vertical derivative, thus favoring the emergence of axis-aligned edges, and giving a ``crystalline'' look to the barycenters. We refer for instance to~\cite{2015-Caselles-tv} for a study of the effect of TV regularization on the shapes of levelsets using isotropic and crystalline total variations. 
+
+In this case, it is possible to compute in closed form the proximal operator~\eqref{eq-proximal-map}. Indeed, one has $J^* = \iota_{\norm{\cdot}_{\beta^*} \leq \la}$ where $\beta^*$ is the conjugate exponent $1/\beta+1/\beta^*=1$. One can compute explicitly the proximal operator in the case $\beta \in \{1,2\}$ since they correspond to orthogonal projectors on $\ell^{\beta^*}$ balls
+\eq{
+	\Prox_{\tau J^*}(v)_i = 
+	\choice{
+		\min(\max(v_i,-\la), \la) \qifq \beta=1,  \\
+		v_i \frac{\la}{ \max(\norm{v_i},1) }  \qifq \beta=2.
+	}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Barycenters of Images}
+\label{sec-tv-images}
+
+We start by computing barycenters of a small number of 2-D images, that are discretized on an uniform rectangular grid of $n=256 \times 256$ pixels $(z_i)_{i=1}^N$. We use either the isotropic ($\beta=2$) or anisotropic ($\beta=1$) total variation presented above, where $\nabla$ is defined using standard forward finite differences along each axis, and using Neumann boundary conditions. The metric is the usual squared Euclidean metric
+\eql{\label{eq-squared-eucl-metric}
+	\foralls (i,j) \in \{1,\ldots,n\}^2, \quad
+	M_{i,j} = \norm{z_i-z_j}^2. 
+}
+The Gibbs kernel $K=e^{-M/\ga}$ is a filtering with a Gaussian kernel, that can be applied efficiently to histograms in nearly linear time, see~\cite{2015-solomon-siggraph} for more details about convolutional kernels. 
+
+
+\newcommand{\myPic}[3]{\includegraphics[width=.19\linewidth]{tv-regularization/bary4-#1/lambda#2/bary#3}}
+\newcommand{\myspace}{\hspace{0mm}}
+
+\newcommand{\myTable}[3]{ % 
+	\begin{subfigure}[b]{0.48\textwidth}
+	\begin{tabular}{|@{}c@{\myspace{}}c@{\myspace{}}c@{\myspace{}}c@{\myspace{}}c@{}|}
+		\hline
+		\myPic{#1}{#2}{1}&
+		\myPic{#1}{#2}{2}&
+		\myPic{#1}{#2}{3}&
+		\myPic{#1}{#2}{4}&
+		\myPic{#1}{#2}{5}\\[-2mm]
+		\myPic{#1}{#2}{6}&
+		\myPic{#1}{#2}{7}&
+		\myPic{#1}{#2}{8}&
+		\myPic{#1}{#2}{9}&
+		\myPic{#1}{#2}{10}\\[-2mm]
+		\myPic{#1}{#2}{11}&
+		\myPic{#1}{#2}{12}&
+		\myPic{#1}{#2}{13}&
+		\myPic{#1}{#2}{14}&
+		\myPic{#1}{#2}{15}\\[-2mm]
+		\myPic{#1}{#2}{16}&
+		\myPic{#1}{#2}{17}&
+		\myPic{#1}{#2}{18}&
+		\myPic{#1}{#2}{19}&
+		\myPic{#1}{#2}{20}\\[-2mm]
+		\myPic{#1}{#2}{21}&
+		\myPic{#1}{#2}{22}&
+		\myPic{#1}{#2}{23}&
+		\myPic{#1}{#2}{24}&
+		\myPic{#1}{#2}{25}\\\hline
+	\end{tabular}
+	\caption{#3}
+	\end{subfigure}}
+
+\begin{figure}[h!]
+	\centering	
+	\myTable{aniso}{0}{$\la=0$}	 
+	\myTable{iso}{1000}{Isotropic, $\la=100$}	 
+	\myTable{aniso}{500}{Anisotropic $\la=500$}	 
+	\myTable{aniso}{2000}{Anisotropic $\la=2000$}	 
+	\caption{% 
+		Examples of isotropic and anisotropic TV regularization for the computation of barycenters between four input densities. 
+		The weights $(w_k)_{k=1}^N$ are bilinear interpolation weights, so that it is for instance $w=(1,0,0,0)$ on the 
+		top left corner and $(0,0,0,1)$ on the bottom right corner.  \label{fig-images-bary}
+	}
+\end{figure}
+
+Figure~\ref{fig-images-bary} shows examples of barycenters of $N=4$ input histograms computed by solving~\eqref{eq-regul-primal} using the projected gradient descent method~\eqref{eq-algo-fb}. The input histograms represent 2-D shapes, and are uniform (constant) distributions inside the support of the shapes. Note that in general the barycenters are not shapes, i.e. they are not uniform distributions, but this method can nevertheless be used to define meaningful averaging of shapes as exposed in~\cite{2015-solomon-siggraph}. 
+%
+Figure~\ref{fig-images-bary} compares the effects of $\beta \in \{1,2\}$, and one can clearly see how the isotropic total variation ($\beta=2$) rounds the corners of the input densities, while the anisotropic version ($\beta=1$) favors horizontal/vertical edges.  
+
+
+\newcommand{\myPicL}[2]{\includegraphics[width=.125\linewidth]{tv-regularization/bary2-#1/bary1-lambda#2}}
+
+\begin{figure}[h!]
+	\centering	
+	\begin{tabular}{@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}c@{}}
+		\myPicL{iso}{0} &
+		\myPicL{iso}{200} &
+		\myPicL{iso}{400} &
+		\myPicL{iso}{600} &
+		\myPicL{iso}{800} &
+		\myPicL{iso}{1000} &
+		\myPicL{iso}{2000} &
+		\myPicL{iso}{3000} \\
+		\myPicL{aniso}{0} &
+		\myPicL{aniso}{200} &
+		\myPicL{aniso}{400} &
+		\myPicL{aniso}{600} &
+		\myPicL{aniso}{800} &
+		\myPicL{aniso}{1000} &
+		\myPicL{aniso}{2000} &
+		\myPicL{aniso}{3000} \\
+		$\la=0$ &
+		$\la=20$ &
+		$\la=40$ &
+		$\la=60$ &
+		$\la=80$ &
+		$\la=100$ &
+		$\la=200$ &
+		$\la=300$ 
+	\end{tabular}	 
+	\caption{% 
+		Influence of $\la$ parameter for the iso-barycenter (i.e. $w=(1/2,1/2)$) between two input densities (they are the upper-left and upper-right corner of the $\la=0$ case in Figure~\ref{fig-images-bary}). 
+		\textit{Top row:} isotropic total variation ($\beta=2$).
+		\textit{Bottom row:} anisotropic total variation ($\beta=1$). \label{fig-images-influ-lambda}
+	}
+\end{figure}
+
+Figure~\ref{fig-images-influ-lambda} shows the influence of the regularization strength $\la$ to compute the iso-barycenter of $N=2$ shapes. This highlights the fact that this total variation regularization has the tendency to group together small clusters, which might be beneficial for some applications, as illustrated in Section~\ref{sec-tv-meg} on MEG data denoising. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Barycenters of MEG Data}
+\label{sec-tv-meg}
+
+We applied our method to a magnetoencephalography (MEG) dataset. In this setup, brain activity of a subject is recorded  (Elekta Neuromag, 306 sensors of which 204 planar gradiometers and 102 magnetometers, sampling frequency 1000Hz) while it reacted to the presentation of a target stimulus by pressing either the left or the right button.
+
+Data is preprocessed applying signal space separation correction, interpolation of noisy sensors, and realignment of data into a subject-specific head position (MaxFilter, Elekta Neuromag). The signal was then filtered (low pass 40HZ), and artifacts such as blinks and heartbeats removed thanks to Signal-Space Projection using the Brainstorm software\footnote{\url{http://neuroimage.usc.edu/brainstorm}}. The samples we used for our barycenter computations are an average of the norm of the two gradiometers for each channel from stimulation onto 50ms and the classes were left or right button. 
+
+\newcommand{\myPicMEGin}[2]{\includegraphics[width=.125\linewidth]{meg/input/#1-#2}}
+\newcommand{\myPicMEGbar}[2]{\includegraphics[width=.125\linewidth]{meg/bary/bary#1-lambda#2}}
+\newcommand{\myPicMEGmean}[1]{\includegraphics[width=.125\linewidth]{meg/bary/bary#1-mean}}
+
+
+\begin{figure}[h!]
+	\centering	
+	\begin{tabular}{@{}c@{}c@{}c@{}c@{}|@{}c@{}c@{}c@{}c@{}}
+		& Class 1 & & & %
+		& Class 2 & & \\ % 
+		\myPicMEGin{1}{1} &
+		\myPicMEGin{1}{2} &
+		\myPicMEGin{1}{3} &
+		\myPicMEGmean{1} & 
+		%%%%
+		\myPicMEGin{2}{1} &
+		\myPicMEGin{2}{2} &
+		\myPicMEGin{2}{3} &
+		\myPicMEGmean{2} \\
+		Sample 1 & 
+		Sample 2 &
+		Sample 3 &
+		Mean &
+		Sample 1 & 
+		Sample 2 &
+		Sample 3 &
+		Mean  \\
+		\myPicMEGbar{1}{0} &
+		\myPicMEGbar{1}{2} &
+		\myPicMEGbar{1}{4} &
+		\myPicMEGbar{1}{8} &
+		%%%
+		\myPicMEGbar{2}{0} &
+		\myPicMEGbar{2}{2} &
+		\myPicMEGbar{2}{4} &
+		\myPicMEGbar{2}{8} \\
+		$\la=0$ &
+		$\la=2$ &
+		$\la=4$ &
+		$\la=8$ &		
+		%%%
+		$\la=0$ &
+		$\la=2$ &
+		$\la=4$ &
+		$\la=8$ 
+	\end{tabular}	 
+	\caption{% 
+		Barycenter computation on MEG data. The left/right panels shows respectively the first and the second class, 
+		corresponding to recordings where the subject is asked to push the left or the right button.
+		%
+		\textit{Top row:} examples of input histograms $q_k$ for each class, as well as the 
+		$\ell^2$ mean $N^{-1} \sum_k q_k$.
+		\textit{Bottom row:} computed TV-regularized barycenter for different values of $\la$
+		($\la=0$ corresponding to no regularization). \label{fig-meg}
+	}
+\end{figure}
+
+
+This results in two classes of recordings, one for each pressed button. We we aim at computing a representative activity map for each class using Wasserstein barycenters. For each class we have $N=33$ recordings $(q_k)_{k=1}^N$ each having $n=66$ samples located on the vertices an hexahedral mesh of an hemisphere (corresponding to a MEG recording helmet). These recorded values are positive by construction, and we rescale them linearly to impose $q_k \in \Si_n$.  Figure~\ref{fig-meg}, top row, shows some samples from this dataset, displayed using interpolated colors as well as iso-level curves. The black dots represent the position $(z_i)_{i=1}^n$ of the electrode on the half-sphere of the helmet, flattened on a 2-D disk. 
+
+We computed TV-regularized barycenters independently for each class by solving~\eqref{eq-regul-primal} with the TV regularization using the projected gradient descent method~\eqref{eq-algo-fb}. We used a squared Euclidean metric~\eqref{eq-squared-eucl-metric} on the flattened hemisphere.
+%
+Since the data is defined on an irregular graph, instead of~\eqref{eq-exmp-tv}, we use a graph-based discrete gradient. We denote $( (i,j) )_{(i,j) \in \Gg}$ the graph which connects neighboring electrodes. The gradient operator on the graph is
+\eq{
+	\foralls p \in \RR^n, \quad
+	\Aa p \eqdef ( p_i - p_j )_{ (i,j) \in \Gg } \in \RR^{|\Gg|}.
+}
+The total variation on this graph is then obtained by using $J = \la \norm{\cdot}_1$, the $\ell^1$ norm, i.e. we use $\beta=1$ in~\eqref{eq-exmp-tv}. 
+
+Figure~\ref{fig-meg} compares the naive $\ell^2$ barycenters (i.e. the usual mean), barycenters obtained without regularization (i.e. $\la=0$) and barycenters computed with an increasing regularization strength $\la$. The input histograms $(p_k)_k$ being very noisy, the use of regularization is important to make the area of significant activity emerge from the noise. The use of a TV regularization helps to keep a sharp transition between active and non-active regions. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gradient Flow}
+
+Instead of computing barycenters, we now use our regularization to define time-evolutions, which are defined through a so-called discrete gradient flow. 
+
+Starting from an initial histogram $p_0 \in \Si_n$, we define iteratively 
+\eql{\label{eq-gradflow-def}
+	p_{k+1} \eqdef \uargmin{p \in \Si_N} H_{p_k}(p) + \tau f(p).
+}
+This means that one seeks a new iterate at (discrete time) $k+1$ that is both close (according to the Wasserstein distance) to $p_k$ and minimizes the functional $f$. In the following, we consider the gradient flow of regularization functionals as considered before, i.e. that are of the form $\tau f = J \circ \Aa$. Problem~\eqref{eq-gradflow-def} is thus a special case of~\eqref{eq-regul-primal} with $N=1$. 
+
+Letting $k \rightarrow +\infty$, one can informally think of $p_k$ as a discretization of a time evolution evaluated at time $t=k\tau$. This method is a general scheme presented in detail in the monograph~\cite{ambrosio2006gradient}. The use of an implicit time-stepping~\eqref{eq-gradflow-def} allows one to define time evolutions to minimize functionals that are not necessarily smooth, and this is exactly the case of the total variation semi-norm (since $J$ is not differentiable). 
+%
+The use of gradient flows in the context of the Wasserstein fidelity to the previous iterate has been introduced initially in the seminal paper~\cite{jordan1998variational}. When $f$ is the entropy functional, this paper proves that the countinous flow defined by the limit $k \rightarrow+\infty$ is a heat equation. Numerous theoretical papers have shown how to recover many existing non-linear PDE's by considering the appropriate functional $f$, see for instance~\cite{otto2001geometry,GianazzaARMA}.
+
+The numerical method we consider in this article is the one introduced in~\cite{Peyre-JKO}, that makes use of the entropic smoothing of the Wasserstein distance. It is not the scope of the present paper to discuss the problem of approximating gradient flows and the underlying limit non-linear PDE's, and we refer to~\cite{Peyre-JKO} for an overview of the vast literature on this topic. A major bottleneck of the algorithm developed in~\cite{Peyre-JKO} is that it uses a primal optimization scheme (Dykstra's algorithm) that necessitates the computation of the proximal operator of $f$ according to the Kulback-Leibler divergence. Only relatively simple functionals (basically separable functionals such as the entropy) can thus be treated by this approach. In contrast, our dual method can cope with a much larger set of functions, and in particular those of the form $f = J \circ \Aa$, i.e. obtained by pre-composition with a linear operator. 
+
+
+\newcommand{\myPicGF}[2]{\includegraphics[width=.16\linewidth]{gradient-flow/#1/#1-flow-#2}}
+
+\begin{figure}[h!]
+	\centering	
+	\begin{tabular}{@{}c@{\hspace{1mm}}c@{\hspace{1mm}}c@{\hspace{1mm}}c@{\hspace{1mm}}c@{\hspace{1mm}}c@{}}
+		\myPicGF{randdisks}{0} &
+		\myPicGF{randdisks}{2} &
+		\myPicGF{randdisks}{5} &
+		\myPicGF{randdisks}{10} &
+		\myPicGF{randdisks}{15} &
+		\myPicGF{randdisks}{20}  \\
+		\myPicGF{hibiscus}{0} &
+		\myPicGF{hibiscus}{2} &
+		\myPicGF{hibiscus}{5} &
+		\myPicGF{hibiscus}{10} &
+		\myPicGF{hibiscus}{15} &
+		\myPicGF{hibiscus}{20}  \\
+		$t=0$ &
+		$t=20$ &
+		$t=40$ &
+		$t=60$ &
+		$t=80$ &
+		$t=100$ 
+	\end{tabular}	 
+	\caption{% 
+		Examples of gradient flows~\eqref{eq-gradflow-def} at various times $t \eqdef k\tau$. \label{fig-gradient-flow}
+	}
+\end{figure}
+
+
+Figure~\ref{fig-gradient-flow} shows examples of gradient flows computed for the isotropic total variation $f(p)=\norm{\nabla p}_1$ as defined in~\eqref{eq-exmp-tv}. We use the discretization setup considered in Section~\ref{sec-tv-images}. This is exactly the regularization flow considered by~\cite{Burger-JKO}. This paper formally derives the highly non-linear fourth order PDE corresponding to the limit flow. This is however not a ``true'' PDE since the initial TV functional is non-smooth, and derivative should be understood in a weak sense, as limit of an implicit discrete time stepping. While the algorithm proposed in~\cite{Burger-JKO} uses the usual (unregularized) Wasserstein distance, the use of a regularized transport, thanks to the connexion with Gaussian filtering, allows us to deal with larger problems, in 2-D, with a faster numerical scheme. The price to pay is an additional blurring introduced by the  entropic smoothing, but this is acceptable for applications to denoising in imaging. Figure~\ref{fig-gradient-flow} illustrates the behavior of this TV regularization flow, which has the tendency to group together clusters of mass, and performs some kind of progressive ``percolation'' over the whole image. 
+
+
+
+

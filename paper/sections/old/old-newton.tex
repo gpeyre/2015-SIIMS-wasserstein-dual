@@ -1,0 +1,54 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsection{Implementation of Second Order Approaches}
+ 
+ It is also possible to use more advanced optimization schemes to compute descent directions: since the problem we consider has a convex objective of $nN$ variables, is differentiable and has $n$ equality constraints, one can use generic toolboxes that only require first order information, such as the the \texttt{fmincon} matlab function. Moreover, since $H_{\p_k}^*$ is $C^2$ and its Hessian is defined in Eq.~\eqref{eq-hessien-dual}, we can also use a Newton descent constrained to the affine space $\enscond{ (g_k)_k }{ \sum_k \la_k g_k = 0 }$~\cite[\S10]{Boyd:1072}. This method is more costly, but can be still carried out effectively. For the sake of completeness, we provide additional details on this approach below.
+ 
+ \subsection{Newton Method with Equality Constraints}
+ 
+ This approach can be carried out by solving at each gradient iteration a linear KKT system: writing $\Delta$ for the $n\times N$ matrix of gradients as described in Eq.~\eqref{eq:onehistograd}, where each column $\Delta_k$ is equal to the gradient of $H^*_{\q_k}$ computed at $g_k$, computing the Newton descent directions requires solving a symmetric indefinite linear system in the Newton steps $\Delta_k^\text{nt}$ and the additional Lagrange multiplier variable $\rho \in \RR^n$:
+ \begin{equation}\label{eq:newton}
+ \begin{bmatrix} \nabla^2 H^*_{q_1}(g_1) & \zeros & \cdots & \zeros & \lambda_1 I_n \\ \zeros & \nabla^2 H^*_{q_2}(g_2) & \zeros & \zeros & \lambda_2 I_n \\ \vdots & \ddots& \ddots &  \vdots & \vdots \\ \zeros & \cdots & \zeros &   \nabla^2 H^*_{q_N}(g_N) & \lambda_N I_n \\\lambda_1 I_n & \cdots & \cdots & \lambda_N I_n & \zeros_{n\times n}\end{bmatrix} \begin{bmatrix}\Delta^{\text{nt}}_1 \\ \Delta^{\text{nt}}_2 \\ \vdots \\ \Delta^{\text{nt}}_N \\ \rho \end{bmatrix}= \begin{bmatrix}\Delta_1 \\ \Delta_2 \\ \vdots \\ \Delta_N \\ \zeros_n \end{bmatrix}.
+ \end{equation}
+ 
+ % \eq{
+ % 	\foralls k \in N, \quad \IT{H_k} g_k + h = -\IT{v_k}, 
+ % 	\qandq
+ % 	\sum_k \la_k g_k = 0.
+ % }
+ \subsection{Truncated Newton and Regularization} The truncated Newton approach~\cite{nash2000survey} consists in approximating the computation of the Newton direction by solving only approximately that linear system with a few conjugate gradient steps. To do so, we can consider the three following arguments:
+ 
+ A conjugate gradient approach to solve Eq.~\eqref{eq:newton} involves the repeated application of the KKT linear map of dimension $n(N+1)\times n(N+1)$, as described in the left-hand side of Eq.~\eqref{eq:newton}, to a running estimate of the solution. In practice, that map can be implemented using Schur products and two matrix-matrix products that only involve a $(n\times n)$ matrix $K$ and another of size $n\times N$, as shown in Eq.~\eqref{eq:onehistohessian}.
+ 
+ Because for any histogram $q$ the Hessian of $H^*_q$ is rank deficient---Eq.~\eqref{eq:onehistograd} shows that the gradient of $H^*_q$ is invariant under the element-wise addition of a constant to $g$, therefore the vector $\ones_n$ is in the null space of $\nabla^2 H^\star_q(g)$---the linear system in Eq.~\eqref{eq:newton} is rank deficient as well. This problem can be solved by regularizing each Hessian in that matrix with a constant $\varepsilon$ times the identity. In all our experiments, this constant has been set to $\varepsilon=\frac{1e-2}{n\gamma}$. Algorithmically, this is equivalent to adding the matrix $\varepsilon X$ to the matrix $\nabla^2H^* X$ in Eq.~\eqref{eq:onehistohessian} at each conjugate gradient iteration. 
+ 
+ Finally, choosing a pre-conditioner that reduces the conditioning number of the KKT system of Eq.~\eqref{eq:newton} can  prove beneficial to solve it faster. We propose to approximate each Hessian sub-matrix $\nabla^2 H^*_{q_k}(g_k)$ in the KKT system of Eq.~\eqref{eq:newton} by the diagonal matrix formed with its gradient, which is the leading term on the right-hand-side of Eq.~\eqref{eq-hessien-dual}. We form a left-preconditioner matrix $P$ of size $(N+1)n\times (N+1)n$ by substituting to each Hessian in Eq.~\eqref{eq:newton} this diagonal approximation while still adding, as mentioned above, a regularizer $\varepsilon$. $P$ can be expprop-dual-energylicitly inverted using the block-wise matrix inversion lemma. Rather than writing down this matrix here, we simply write in Eq.~\eqref{eq:precond} and in the spirit of Eq.~\eqref{eq:onehistohessian}, the result of the application of $P^{-1}$ on the $n\times \N$ matrix $X$ of direction variables as well as the update of the Lagrangean multiplier vector $\rho$. Using the auxiliary variables
+ 
+ $$\tilde{\Delta}=\frac{\ga}{\Delta+\varepsilon \ones_{n\times N}};\quad \tilde{\Delta}_\lambda= \tilde{\Delta}\diag(\lambda),\quad r=\frac{1}{\tilde{\Delta}\left(\lambda \circ \lambda\right)}, \quad\tilde{r}=r\circ\left((X\circ\tilde{\Delta})\lambda\right)$$
+ this update results in
+ \begin{equation}\label{eq:precond}\begin{aligned}
+ X &\leftarrow \ga X/\Delta+\tilde{\Delta}_\lambda \diag(r\circ\rho-\tilde{r}),\\
+ \rho &\leftarrow \tilde{r}-r\circ\rho.
+ \end{aligned}\end{equation}
+ 	
+ 	
+ 	% 
+ 	% \frac{1}{\gamma} \left[\Delta\circ X - A \circ \left(K  \left(\frac{Q\circ \left(K \left(A\circ X\right)\right)}{B\circ B} \right)\right) \right].\end{aligned}\end{equation}
+ 
+ 
+ % 
+ % 
+ % \begin{algorithm}
+ % 	\begin{algorithmic}[1]
+ % 		\caption{Second Order Method\label{algo:newton}}
+ % 		\STATE \textbf{Input}: $Q=[\q_1,\cdots,\q_N] \in(\Sigma_n)^N$, metric $M\in\RR_+^{n\times n}$,$\lambda\in\Sigma_N$, $\gamma>0$, stepsize $\tau>0$. 
+ % 		\STATE initialize $G\in\mathbb{R}^{n\times N}$ and form the $n\times n$ matrix $K=e^{-M/\gamma }$.
+ % 		\REPEAT
+ % 				\STATE{Compute gradient matrix $\Delta$, see Eq.~\eqref{eq:onehistograd}.}
+ % 				\STATE{Solve to desired precision the KKT system of Eq.~\eqref{eq:newton} using an iterative linear system solver and a pre-conditioner to obtain a $n\times N$ matrix of approximate Newton descent directions $\Delta^{\text{nt}}$.}
+ % 				\STATE $G = G - \tau \Delta^{\text{nt}}$ (gradient update  with approximate line search to set $\tau$.)
+ % 				\STATE $G = G - \frac{1}{\norm{\lambda}_2^2}(G \lambda)  \lambda^T$ \quad (projection such that $G\lambda=0$)
+ % 		\UNTIL{$\ones_d^T\sqrt{(Z\circ Z) \ones_N/N}<\varepsilon$, where $Z=\Delta(I_N-\frac{1}{N}\ones_N\ones_N^T)$}
+ % 		\STATE output barycenter $\p=\Delta \ones_N/N$.
+ % 	\end{algorithmic}
+ % \end{algorithm}
